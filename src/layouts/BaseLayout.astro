@@ -6,7 +6,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'Software Developer Portfolio' } = Astro.props;
+const { title, description = 'Portfolio de Desarrollador de Software' } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -18,90 +18,28 @@ const { title, description = 'Software Developer Portfolio' } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body>
-    <header class="header">
-      <nav class="container nav">
-        <a href="/" class="logo">RD</a>
-        <ul class="nav-links">
-          <li><a href="#about">Sobre mí</a></li>
-          <li><a href="#experience">Experiencia</a></li>
-          <li><a href="#projects">Proyectos</a></li>
-          <li><a href="#skills">Habilidades</a></li>
-          <li><a href="#contact">Contacto</a></li>
+  <body class="bg-stone-50 text-stone-800 min-h-screen">
+    <header class="fixed top-0 left-0 right-0 h-16 bg-stone-50/95 backdrop-blur-sm border-b border-stone-200 z-50">
+      <nav class="max-w-4xl mx-auto px-6 h-full flex items-center justify-between">
+        <a href="/" class="text-2xl font-bold text-emerald-600">RD</a>
+        <ul class="flex gap-6 text-sm font-medium">
+          <li><a href="#about" class="hover:text-emerald-600 transition-colors">Sobre mí</a></li>
+          <li><a href="#experience" class="hover:text-emerald-600 transition-colors">Experiencia</a></li>
+          <li><a href="#projects" class="hover:text-emerald-600 transition-colors">Proyectos</a></li>
+          <li><a href="#skills" class="hover:text-emerald-600 transition-colors">Skills</a></li>
+          <li><a href="#contact" class="hover:text-emerald-600 transition-colors">Contacto</a></li>
         </ul>
       </nav>
     </header>
 
-    <main>
+    <main class="pt-16">
       <slot />
     </main>
 
-    <footer class="footer">
-      <div class="container">
+    <footer class="py-8 text-center border-t border-stone-200 text-stone-500 text-sm">
+      <div class="max-w-4xl mx-auto px-6">
         <p>&copy; {new Date().getFullYear()} Ruben Delgado. Todos los derechos reservados.</p>
       </div>
     </footer>
   </body>
 </html>
-
-<style>
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: var(--header-height);
-    background: rgba(250, 250, 250, 0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--color-border);
-    z-index: 100;
-  }
-
-  .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-  }
-
-  .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-primary);
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: var(--color-text);
-    font-weight: 500;
-    font-size: 0.95rem;
-  }
-
-  .nav-links a:hover {
-    color: var(--color-primary);
-  }
-
-  main {
-    padding-top: var(--header-height);
-  }
-
-  .footer {
-    padding: 2rem 0;
-    text-align: center;
-    border-top: 1px solid var(--color-border);
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
-  }
-
-  @media (max-width: 640px) {
-    .nav-links {
-      gap: 1rem;
-      font-size: 0.85rem;
-    }
-  }
-</style>

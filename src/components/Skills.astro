@@ -8,16 +8,19 @@ interface Props {
 const { categories } = Astro.props;
 ---
 
-<section id="skills" class="skills">
-  <div class="container">
-    <h2>Habilidades</h2>
-    <div class="skills-grid">
+<section id="skills" class="py-16">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-stone-900 mb-8 relative pb-2">
+      Habilidades
+      <span class="absolute bottom-0 left-0 w-16 h-1 bg-emerald-500"></span>
+    </h2>
+    <div class="grid md:grid-cols-3 gap-6">
       {categories.map((category) => (
-        <div class="skill-category card">
-          <h3 class="category-name">{category.name}</h3>
-          <div class="skill-list">
+        <div class="bg-white border border-stone-200 rounded-xl p-6">
+          <h3 class="text-base font-semibold text-emerald-600 mb-4">{category.name}</h3>
+          <div class="flex flex-wrap gap-2">
             {category.skills.map((skill) => (
-              <span class="skill-item">{skill.name}</span>
+              <span class="text-sm px-3 py-1.5 bg-stone-100 text-stone-700 rounded-lg">{skill.name}</span>
             ))}
           </div>
         </div>
@@ -25,36 +28,3 @@ const { categories } = Astro.props;
     </div>
   </div>
 </section>
-
-<style>
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .skill-category {
-    padding: 1.5rem;
-  }
-
-  .category-name {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--color-primary);
-  }
-
-  .skill-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .skill-item {
-    font-size: 0.9rem;
-    padding: 0.5rem 0.75rem;
-    background: var(--color-bg);
-    border-radius: 4px;
-    color: var(--color-text);
-  }
-</style>
