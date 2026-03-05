@@ -1,0 +1,60 @@
+---
+import type { SkillCategory } from '../types/portfolio';
+
+interface Props {
+  categories: SkillCategory[];
+}
+
+const { categories } = Astro.props;
+---
+
+<section id="skills" class="skills">
+  <div class="container">
+    <h2>Habilidades</h2>
+    <div class="skills-grid">
+      {categories.map((category) => (
+        <div class="skill-category card">
+          <h3 class="category-name">{category.name}</h3>
+          <div class="skill-list">
+            {category.skills.map((skill) => (
+              <span class="skill-item">{skill.name}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-category {
+    padding: 1.5rem;
+  }
+
+  .category-name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+  }
+
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-item {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--color-bg);
+    border-radius: 4px;
+    color: var(--color-text);
+  }
+</style>
