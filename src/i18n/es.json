@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "about": "Sobre mí",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "skills": "Skills",
+    "contact": "Contacto"
+  },
+  "about": {
+    "greeting": "Hola, soy",
+    "title": "Desarrollador de Software",
+    "bio": "Desarrollador apasionado por crear experiencias web modernas y eficientes. Me especializo en el desarrollo full stack con tecnologías modernas.",
+    "cta": "Contactar"
+  },
+  "experience": {
+    "title": "Experiencia"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "demo": "Ver demo",
+    "github": "GitHub"
+  },
+  "skills": {
+    "title": "Habilidades"
+  },
+  "contact": {
+    "title": "Contacto",
+    "description": "¿Interesado en trabajar conmigo? ¡Escríbeme!"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados."
+  }
+}

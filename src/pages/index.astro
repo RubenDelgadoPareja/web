@@ -5,8 +5,11 @@ import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
 import Skills from '../components/Skills.astro';
 import Contact from '../components/Contact.astro';
-import ExperienceSection from '../components/Experience.astro';
+import { getTranslations } from '../i18n/utils';
 import type { Experience as ExperienceType, Project, SkillCategory, ContactLink } from '../types/portfolio';
+
+const lang = 'es';
+const t = getTranslations(lang);
 
 const experience: ExperienceType[] = [
   {
@@ -83,13 +86,13 @@ const contactLinks: ContactLink[] = [
 ];
 ---
 
-<BaseLayout title="Ruben Delgado - Desarrollador de Software">
+<BaseLayout title="Ruben Delgado - Desarrollador de Software" lang={lang} t={t}>
   <About 
     name="Ruben Delgado" 
     title="Desarrollador de Software" 
     bio="Desarrollador passionate por crear experiencias web modernas y eficientes. Me especializo en el desarrollo full stack con tecnologías modernas."
   />
-  <ExperienceSection experiences={experience} />
+  <Experience experiences={experience} />
   <Projects projects={projects} />
   <Skills categories={skills} />
   <Contact links={contactLinks} />

@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "about": {
+    "greeting": "Hi, I'm",
+    "title": "Software Developer",
+    "bio": "Developer passionate about creating modern and efficient web experiences. I specialize in full stack development with modern technologies.",
+    "cta": "Contact me"
+  },
+  "experience": {
+    "title": "Experience"
+  },
+  "projects": {
+    "title": "Projects",
+    "demo": "View demo",
+    "github": "GitHub"
+  },
+  "skills": {
+    "title": "Skills"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Interested in working with me? Get in touch!"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}
