@@ -3,15 +3,17 @@ import type { ContactLink } from '../types/portfolio';
 
 interface Props {
   links: ContactLink[];
+  title: string;
+  description: string;
 }
 
-const { links } = Astro.props;
+const { links, title, description } = Astro.props;
 ---
 
 <section id="contact" class="py-16 bg-stone-900 text-white">
   <div class="max-w-4xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-4">Contacto</h2>
-    <p class="text-stone-400 mb-8">¿Interesado en trabajar conmigo? ¡Escríbeme!</p>
+    <h2 class="text-3xl font-bold mb-4">{title}</h2>
+    <p class="text-stone-400 mb-8">{description}</p>
     <div class="flex flex-wrap justify-center gap-4">
       {links.map((link) => (
         <a 

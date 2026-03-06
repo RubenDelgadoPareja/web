@@ -1,23 +1,27 @@
 ---
 interface Props {
   name: string;
-  title: string;
-  bio: string;
+  about: {
+    greeting: string;
+    title: string;
+    bio: string;
+    cta: string;
+  };
 }
 
-const { name, title, bio } = Astro.props;
+const { name, about } = Astro.props;
 ---
 
 <section id="about" class="min-h-[calc(100vh-4rem)] flex items-center py-16">
   <div class="max-w-4xl mx-auto px-6">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div class="order-2 md:order-1">
-        <p class="text-emerald-600 font-medium mb-2">Hola, soy</p>
+        <p class="text-emerald-600 font-medium mb-2">{about.greeting}</p>
         <h1 class="text-5xl font-bold text-stone-900 mb-3">{name}</h1>
-        <p class="text-xl text-stone-500 mb-6">{title}</p>
-        <p class="text-stone-600 mb-8 max-w-md leading-relaxed">{bio}</p>
+        <p class="text-xl text-stone-500 mb-6">{about.title}</p>
+        <p class="text-stone-600 mb-8 max-w-md leading-relaxed">{about.bio}</p>
         <a href="#contact" class="inline-block bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors">
-          Contactar
+          {about.cta}
         </a>
       </div>
       <div class="order-1 md:order-2 flex justify-center">

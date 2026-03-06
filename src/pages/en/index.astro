@@ -1,31 +1,31 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import About from '../components/About.astro';
-import Experience from '../components/Experience.astro';
-import Projects from '../components/Projects.astro';
-import Skills from '../components/Skills.astro';
-import Contact from '../components/Contact.astro';
-import type { Experience as ExperienceType, Project, SkillCategory, ContactLink } from '../types/portfolio';
-import { translations } from '../i18n/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import About from '../../components/About.astro';
+import Experience from '../../components/Experience.astro';
+import Projects from '../../components/Projects.astro';
+import Skills from '../../components/Skills.astro';
+import Contact from '../../components/Contact.astro';
+import type { Experience as ExperienceType, Project, SkillCategory, ContactLink } from '../../types/portfolio';
+import { translations } from '../../i18n/utils';
 
-const lang = 'es';
+const lang = 'en';
 const t = translations[lang];
 
 const experience: ExperienceType[] = [
   {
     id: '1',
-    company: 'Tu Empresa',
-    role: 'Desarrollador Full Stack',
-    period: '2023 - Actualidad',
-    description: 'Desarrollo de aplicaciones web modernas con React, Node.js y bases de datos PostgreSQL.',
+    company: 'Your Company',
+    role: 'Full Stack Developer',
+    period: '2023 - Present',
+    description: 'Development of modern web applications with React, Node.js and PostgreSQL databases.',
     technologies: ['React', 'Node.js', 'PostgreSQL', 'TypeScript']
   },
   {
     id: '2',
-    company: 'Empresa Anterior',
-    role: 'Desarrollador Frontend',
+    company: 'Previous Company',
+    role: 'Frontend Developer',
     period: '2021 - 2023',
-    description: 'Implementación de interfaces de usuario responsivas y optimización de rendimiento.',
+    description: 'Implementation of responsive user interfaces and performance optimization.',
     technologies: ['JavaScript', 'CSS', 'HTML', 'Vue.js']
   }
 ];
@@ -33,15 +33,15 @@ const experience: ExperienceType[] = [
 const projects: Project[] = [
   {
     id: '1',
-    title: 'Proyecto 1',
-    description: 'Descripción de tu proyecto destacado.',
+    title: 'Project 1',
+    description: 'Description of your featured project.',
     technologies: ['React', 'TypeScript', 'Node.js'],
     github: 'https://github.com'
   },
   {
     id: '2',
-    title: 'Proyecto 2',
-    description: 'Otro proyecto interesante.',
+    title: 'Project 2',
+    description: 'Another interesting project.',
     technologies: ['Astro', 'Tailwind', 'PostgreSQL'],
     link: 'https://demo.com',
     github: 'https://github.com'
@@ -69,7 +69,7 @@ const skills: SkillCategory[] = [
     ]
   },
   {
-    name: 'Herramientas',
+    name: 'Tools',
     skills: [
       { name: 'Git' },
       { name: 'Docker' },
@@ -82,11 +82,11 @@ const skills: SkillCategory[] = [
 const contactLinks: ContactLink[] = [
   { name: 'GitHub', url: 'https://github.com' },
   { name: 'LinkedIn', url: 'https://linkedin.com' },
-  { name: 'Email', url: 'mailto:tuemail@ejemplo.com' }
+  { name: 'Email', url: 'mailto:youremail@example.com' }
 ];
 ---
 
-<BaseLayout title="Ruben Delgado - Desarrollador de Software" lang={lang}>
+<BaseLayout title="Ruben Delgado - Software Developer" lang={lang}>
   <About 
     name="Ruben Delgado" 
     about={t.about}
