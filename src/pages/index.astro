@@ -1,90 +1,98 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import About from '../components/About.astro';
-import Experience from '../components/Experience.astro';
-import Projects from '../components/Projects.astro';
-import Skills from '../components/Skills.astro';
-import Contact from '../components/Contact.astro';
-import type { Experience as ExperienceType, Project, SkillCategory, ContactLink } from '../types/portfolio';
-import { translations } from '../i18n/utils';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import About from "../components/About.astro";
+import Experience from "../components/Experience.astro";
+import Projects from "../components/Projects.astro";
+import Skills from "../components/Skills.astro";
+import Contact from "../components/Contact.astro";
+import type {
+  Experience as ExperienceType,
+  Project,
+  SkillCategory,
+  ContactLink,
+} from "../types/portfolio";
+import { translations } from "../i18n/utils";
 
-const lang = 'es';
+const lang = "es";
 const t = translations[lang];
 
 const experience: ExperienceType[] = [
   {
-    id: '1',
-    company: 'El Corte Inglés',
-    role: 'Intermediate Software Dev',
-    period: '2024 - Present',
-    description: 'Development of booking platform for theater shows. Date and seat selection system implementation.',
-    technologies: ['React', 'TypeScript', 'CLEAN Architecture']
+    id: "1",
+    company: "Nazaries Intelligence",
+    role: "Desarrollador Software Intermediate",
+    period: "2025 - Actualidad",
+    description:
+      "En mi período como Intermediate, me familiaricé con la arquitectura CLEAN y hexagonal, mejorando en patrones de diseño y rendimiento de renders con React. Trabajé en un proyecto con formularios masivos, inicialmente con Formik y posteriormente con React-hook-form. La reactividad la implementamos con Mobx y empezamos a aplicar inyección de dependencias con Inversify. Las validaciones se hacían con class-validator pero migramos a Zod. Después trabajé con El Corte Inglés desarrollando la pasarela de compra de entradas para teatros.",
+    technologies: ["React", "TypeScript", "MobX", "Inversify", "Zod", "React Hook Form", "CLEAN Architecture", "El Corte Inglés"],
   },
   {
-    id: '2',
-    company: 'SPA Chain (US Client)',
-    role: 'Software Developer',
-    period: '2023 - 2024',
-    description: 'ERP system for comprehensive SPA chain management. Modules for rooms, materials, resources and suppliers. Advanced calendar with events and employee assignment.',
-    technologies: ['React', 'TypeScript', 'Vite', 'Vitest']
+    id: "2",
+    company: "Nazaries Intelligence",
+    role: "Desarrollador Software Junior",
+    period: "2023 - 2025",
+    description:
+      "Trabajando como Desarrollador Software Junior, continúe utilizando Ruby on Rails pero me di cuenta de que no era lo mío y me adentré en el mundo de la UI. Comencé aprendiendo JavaScript y React apoyando a equipos con nuevos diseños. También customicé estilos de WordPress. Probé Angular y apliqué estos conocimientos en un proyecto de biblioteca virtual para niños con Santillana. Además, aprendí Vue.js con Nuxt en el mismo proyecto y un poco de Node.js con MongoDB.",
+    technologies: ["React", "Angular", "Vue.js", "Nuxt", "Node.js", "MongoDB", "JavaScript", "WordPress", "Jest"],
   },
   {
-    id: '3',
-    company: 'Freelance / Other Projects',
-    role: 'Frontend Developer',
-    period: '2022 - 2023',
-    description: 'Web applications with CLEAN and hexagonal architecture. Development with Angular, Vue.js and React. Component testing with Jest.',
-    technologies: ['Angular', 'Vue.js', 'React', 'Jest', 'Docker']
-  }
+    id: "3",
+    company: "Nazaries Intelligence",
+    role: "Internship",
+    period: "2022 - 2023",
+    description:
+      "Durante mi etapa de prácticas comencé aprendiendo a usar Ruby on Rails y familiarizarme con el patrón MVC. Aprendí a utilizar contenedores Docker y Git. Tuve la oportunidad de trabajar en proyectos internos de la empresa, dar mantenimiento a proyectos con clientes y nuevos desarrollos.",
+    technologies: ["Ruby on Rails", "MVC", "Docker", "Git"],
+  },
 ];
 
 const projects: Project[] = [];
 
 const skills: SkillCategory[] = [
   {
-    name: 'Tech Stack',
+    name: "Tech Stack",
     skills: [
-      { name: 'React.js' },
-      { name: 'TypeScript' },
-      { name: 'Vite' },
-      { name: 'Vitest' },
-      { name: 'Docker' }
-    ]
+      { name: "React.js" },
+      { name: "TypeScript" },
+      { name: "Vite" },
+      { name: "Vitest" },
+      { name: "Docker" },
+    ],
   },
   {
-    name: 'Soft Skills',
+    name: "Soft Skills",
     skills: [
-      { name: 'Teamworker' },
-      { name: 'Responsible' },
-      { name: 'Problem Solving' },
-      { name: 'Independent' },
-      { name: 'Hard Working' }
-    ]
+      { name: "Trabajo en equipo" },
+      { name: "Responsable" },
+      { name: "Resolución de problemas" },
+      { name: "Independiente" },
+      { name: "Trabajador" },
+    ],
   },
   {
-    name: 'Languages',
-    skills: [
-      { name: 'Spanish (Native)' },
-      { name: 'English (B2)' }
-    ]
-  }
+    name: "Idiomas",
+    skills: [{ name: "Español (Nativo)" }, { name: "Inglés (B2)" }],
+  },
 ];
 
 const contactLinks: ContactLink[] = [
-  { name: 'Email', url: 'mailto:ruben051199@gmail.com' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/rubén-delgado-pareja-baaa67206' },
-  { name: 'Phone', url: 'tel:+34662000647' }
+  { name: "Email", url: "mailto:ruben051199@gmail.com" },
+  {
+    name: "LinkedIn",
+    url: "https://linkedin.com/in/rubén-delgado-pareja-baaa67206",
+  },
+  { name: "Phone", url: "tel:+34662000647" },
 ];
 ---
 
 <BaseLayout title="Ruben Delgado - Frontend Software Developer" lang={lang}>
-  <About 
-    name="Ruben Delgado" 
-    about={t.about}
-    location="Granada, Spain"
-  />
+  <About name="Ruben Delgado" about={t.about} location="Granada, Spain" />
   <Experience experiences={experience} title={t.experience.title} />
   <Projects projects={projects} title={t.projects} />
   <Skills categories={skills} title={t.skills.title} />
-  <Contact links={contactLinks} title={t.contact.title} description={t.contact.description} />
+  <Contact
+    links={contactLinks}
+    title={t.contact.title}
+    description={t.contact.description}
+  />
 </BaseLayout>
