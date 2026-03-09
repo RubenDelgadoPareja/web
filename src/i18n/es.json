@@ -7,10 +7,10 @@
     "contact": "Contacto"
   },
   "about": {
-    "greeting": "Hi, I'm",
-    "title": "Frontend Software Developer",
-    "bio": "Software Engineer with 2+ years of experience building web applications. Specialized in React with TypeScript, I've worked on international projects with US clients and currently collaborate with major Spanish companies like El Corte Inglés. Passionate about new technologies and video games.",
-    "cta": "Get in touch"
+    "greeting": "Hola, soy",
+    "title": "Desarrollador Frontend",
+    "bio": "Ingeniero de Software con más de 2 años de experiencia creando aplicaciones web. Especializado en React con TypeScript, he trabajado en proyectos internacionales con clientes de EE.UU. y actualmente colaboro con grandes empresas españolas como El Corte Inglés. Apasionado por las nuevas tecnologías y los videojuegos.",
+    "cta": "Contactar"
   },
   "experience": {
     "title": "Experiencia"
