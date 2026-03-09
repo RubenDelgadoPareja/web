@@ -8,9 +8,9 @@
   },
   "about": {
     "greeting": "Hi, I'm",
-    "title": "Software Developer",
-    "bio": "Developer passionate about creating modern and efficient web experiences. I specialize in full stack development with modern technologies.",
-    "cta": "Contact me"
+    "title": "Frontend Software Developer",
+    "bio": "Software Engineer with 2+ years of experience building web applications. Specialized in React with TypeScript, I've worked on international projects with US clients and currently collaborate with major Spanish companies like El Corte Inglés. Passionate about new technologies and video games.",
+    "cta": "Get in touch"
   },
   "experience": {
     "title": "Experience"

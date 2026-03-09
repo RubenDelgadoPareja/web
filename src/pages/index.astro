@@ -14,82 +14,74 @@ const t = translations[lang];
 const experience: ExperienceType[] = [
   {
     id: '1',
-    company: 'Tu Empresa',
-    role: 'Desarrollador Full Stack',
-    period: '2023 - Actualidad',
-    description: 'Desarrollo de aplicaciones web modernas con React, Node.js y bases de datos PostgreSQL.',
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'TypeScript']
+    company: 'El Corte Inglés',
+    role: 'Intermediate Software Dev',
+    period: '2024 - Present',
+    description: 'Development of booking platform for theater shows. Date and seat selection system implementation.',
+    technologies: ['React', 'TypeScript', 'CLEAN Architecture']
   },
   {
     id: '2',
-    company: 'Empresa Anterior',
-    role: 'Desarrollador Frontend',
-    period: '2021 - 2023',
-    description: 'Implementación de interfaces de usuario responsivas y optimización de rendimiento.',
-    technologies: ['JavaScript', 'CSS', 'HTML', 'Vue.js']
+    company: 'SPA Chain (US Client)',
+    role: 'Software Developer',
+    period: '2023 - 2024',
+    description: 'ERP system for comprehensive SPA chain management. Modules for rooms, materials, resources and suppliers. Advanced calendar with events and employee assignment.',
+    technologies: ['React', 'TypeScript', 'Vite', 'Vitest']
+  },
+  {
+    id: '3',
+    company: 'Freelance / Other Projects',
+    role: 'Frontend Developer',
+    period: '2022 - 2023',
+    description: 'Web applications with CLEAN and hexagonal architecture. Development with Angular, Vue.js and React. Component testing with Jest.',
+    technologies: ['Angular', 'Vue.js', 'React', 'Jest', 'Docker']
   }
 ];
 
-const projects: Project[] = [
-  {
-    id: '1',
-    title: 'Proyecto 1',
-    description: 'Descripción de tu proyecto destacado.',
-    technologies: ['React', 'TypeScript', 'Node.js'],
-    github: 'https://github.com'
-  },
-  {
-    id: '2',
-    title: 'Proyecto 2',
-    description: 'Otro proyecto interesante.',
-    technologies: ['Astro', 'Tailwind', 'PostgreSQL'],
-    link: 'https://demo.com',
-    github: 'https://github.com'
-  }
-];
+const projects: Project[] = [];
 
 const skills: SkillCategory[] = [
   {
-    name: 'Frontend',
+    name: 'Tech Stack',
     skills: [
-      { name: 'JavaScript' },
+      { name: 'React.js' },
       { name: 'TypeScript' },
-      { name: 'React' },
-      { name: 'Astro' },
-      { name: 'HTML/CSS' }
+      { name: 'Vite' },
+      { name: 'Vitest' },
+      { name: 'Docker' }
     ]
   },
   {
-    name: 'Backend',
+    name: 'Soft Skills',
     skills: [
-      { name: 'Node.js' },
-      { name: 'Python' },
-      { name: 'PostgreSQL' },
-      { name: 'MongoDB' }
+      { name: 'Teamworker' },
+      { name: 'Responsible' },
+      { name: 'Problem Solving' },
+      { name: 'Independent' },
+      { name: 'Hard Working' }
     ]
   },
   {
-    name: 'Herramientas',
+    name: 'Languages',
     skills: [
-      { name: 'Git' },
-      { name: 'Docker' },
-      { name: 'AWS' },
-      { name: 'Linux' }
+      { name: 'Spanish (Native)' },
+      { name: 'English (B2)' }
     ]
   }
 ];
 
 const contactLinks: ContactLink[] = [
-  { name: 'GitHub', url: 'https://github.com' },
-  { name: 'LinkedIn', url: 'https://linkedin.com' },
-  { name: 'Email', url: 'mailto:tuemail@ejemplo.com' }
+  { name: 'Email', url: 'mailto:ruben051199@gmail.com' },
+  { name: 'LinkedIn', url: 'https://linkedin.com/in/rubén-delgado-pareja-baaa67206' },
+  { name: 'Phone', url: 'tel:+34662000647' }
 ];
 ---
 
-<BaseLayout title="Ruben Delgado - Desarrollador de Software" lang={lang}>
+<BaseLayout title="Ruben Delgado - Frontend Software Developer" lang={lang}>
   <About 
     name="Ruben Delgado" 
     about={t.about}
+    location="Granada, Spain"
   />
   <Experience experiences={experience} title={t.experience.title} />
   <Projects projects={projects} title={t.projects} />
