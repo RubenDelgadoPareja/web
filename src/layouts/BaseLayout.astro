@@ -40,51 +40,76 @@ const t = translations[lang];
     class="bg-stone-50 dark:bg-stone-900 text-stone-800 dark:text-stone-100 min-h-screen transition-colors"
   >
     <header
-      class="fixed top-0 left-0 right-0 h-16 glass border-b border-white/20 dark:border-white/10 z-50"
+      class="fixed top-0 left-0 right-0 h-16 glass z-50"
+      role="banner"
     >
       <nav
         class="max-w-4xl mx-auto px-6 h-full flex items-center justify-between"
+        role="navigation"
+        aria-label="Main navigation"
       >
         <a
           href={lang === "es" ? "/" : "/en/"}
           class="text-2xl font-bold text-emerald-600 hover:scale-110 transition-transform"
+          aria-label="Ruben Delgado - Home"
           >RD</a
         >
-        <div class="flex items-center gap-4">
-          <ul class="flex gap-6 text-sm font-medium">
-            <li>
+        <button
+          class="md:hidden p-2"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="main-menu"
+          id="menu-toggle"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+        <div class="hidden md:flex items-center gap-4" id="main-menu">
+          <ul class="flex gap-6 text-sm font-medium" role="menubar">
+            <li role="none">
               <a
-                href={`#about`}
+                href="#about"
                 class="hover:text-emerald-600 transition-colors"
-                >{t.nav.about}</a>
+                role="menuitem"
+              >{t.nav.about}</a>
             </li>
-            <li>
+            <li role="none">
               <a
-                href={`#experience`}
+                href="#experience"
                 class="hover:text-emerald-600 transition-colors"
-                >{t.nav.experience}</a>
+                role="menuitem"
+              >{t.nav.experience}</a>
             </li>
-            <li>
+            <li role="none">
               <a
-                href={`#projects`}
+                href="#projects"
                 class="hover:text-emerald-600 transition-colors"
-                >{t.nav.projects}</a>
+                role="menuitem"
+              >{t.nav.projects}</a>
             </li>
-            <li>
+            <li role="none">
               <a
-                href={`#skills`}
+                href="#skills"
                 class="hover:text-emerald-600 transition-colors"
-                >{t.nav.skills}</a>
-            </li>
-            <li>
-              <a
-                href={`#contact`}
-                class="hover:text-emerald-600 transition-colors"
-                >{t.nav.contact}</a>
+                role="menuitem"
+              >{t.nav.skills}</a>
             </li>
           </ul>
           <ThemeToggle lang={lang} />
           <LanguageSelector currentLang={lang} client:load />
+        </div>
+        <div id="mobile-menu" class="hidden fixed inset-0 top-16 bg-stone-50 dark:bg-stone-900 z-40 p-6 flex flex-col gap-4">
+          <ul class="flex flex-col gap-4 text-lg font-medium">
+            <li><a href="#about" class="block py-2 hover:text-emerald-600">{t.nav.about}</a></li>
+            <li><a href="#experience" class="block py-2 hover:text-emerald-600">{t.nav.experience}</a></li>
+            <li><a href="#projects" class="block py-2 hover:text-emerald-600">{t.nav.projects}</a></li>
+            <li><a href="#skills" class="block py-2 hover:text-emerald-600">{t.nav.skills}</a></li>
+          </ul>
+          <div class="flex gap-4 mt-4">
+            <ThemeToggle lang={lang} />
+            <LanguageSelector currentLang={lang} client:load />
+          </div>
         </div>
       </nav>
     </header>
@@ -100,7 +125,56 @@ const t = translations[lang];
         <p>
           &copy; {new Date().getFullYear()} Ruben Delgado. {t.footer.rights}
         </p>
+        <div class="flex justify-center gap-4 mt-4">
+          <a href="/privacidad" class="hover:text-emerald-500 transition-colors">Privacidad</a>
+          <a href="/cookies" class="hover:text-emerald-500 transition-colors">Cookies</a>
+          <a href="/legal" class="hover:text-emerald-500 transition-colors">Legal</a>
+        </div>
       </div>
     </footer>
   </body>
 </html>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuToggle?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.toggle('hidden') === false;
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  const animateElements = document.querySelectorAll(".fade-in-up, .fade-in-left, .fade-in-right");
+  
+  animateElements.forEach((el) => {
+    gsap.fromTo(el, 
+      { 
+        autoAlpha: 0, 
+        y: 50 
+      },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 88%",
+          toggleActions: "play none none none"
+        }
+      }
+    );
+  });
+</script>

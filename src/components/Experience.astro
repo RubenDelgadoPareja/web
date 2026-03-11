@@ -9,35 +9,35 @@ interface Props {
 const { experiences, title } = Astro.props;
 ---
 
-<section id="experience" class="py-16">
-  <div class="max-w-4xl mx-auto px-6">
+<section id="experience" class="py-20" aria-labelledby="experience-heading">
+  <div class="max-w-6xl mx-auto px-6">
     <h2
-      class="text-3xl font-bold text-stone-900 dark:text-white mb-8 relative pb-2"
+      id="experience-heading"
+      class="text-4xl md:text-5xl font-bold text-stone-900 dark:text-white mb-12 relative pb-4 fade-in-up"
     >
       {title}
-      <span class="absolute bottom-0 left-0 w-16 h-1 bg-emerald-500"></span>
     </h2>
     <div class="space-y-6">
       {
-        experiences.map((exp) => (
-          <article class="glass-card rounded-2xl p-6 transition-all duration-300">
-            <div class="flex flex-wrap justify-between items-start gap-4 mb-3">
+        experiences.map((exp, index) => (
+          <article class="glass-card rounded-3xl p-8 transition-all duration-300 fade-in-up group hover:scale-[1.02] hover:shadow-xl hover:shadow-emerald-500/10" style={`transition-delay: ${index * 0.1}s`}>
+            <div class="flex flex-wrap justify-between items-start gap-4 mb-4">
               <div>
-                <h3 class="text-lg font-semibold text-stone-800 dark:text-white">
+                <h3 class="text-xl font-semibold text-stone-800 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                   {exp.role}
                 </h3>
-                <p class="text-emerald-600 font-medium">{exp.company}</p>
+                <p class="text-emerald-600 dark:text-emerald-400 font-medium">{exp.company}</p>
               </div>
-              <span class="text-sm text-stone-500 dark:text-stone-400 bg-white/50 dark:bg-white/10 px-3 py-1 rounded-full">
+              <span class="text-sm text-stone-500 dark:text-stone-400 bg-emerald-100/50 dark:bg-emerald-900/20 px-4 py-1.5 rounded-full">
                 {exp.period}
               </span>
             </div>
-            <p class="text-stone-600 dark:text-stone-300 mb-4">
+            <p class="text-stone-600 dark:text-stone-300 mb-6 leading-relaxed">
               {exp.description}
             </p>
             <div class="flex flex-wrap gap-2">
               {exp.technologies.map((tech) => (
-                <span class="text-xs px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full">
+                <span class="text-xs px-3 py-1.5 bg-stone-200 dark:bg-white/10 text-stone-600 dark:text-stone-400 rounded-full">
                   {tech}
                 </span>
               ))}

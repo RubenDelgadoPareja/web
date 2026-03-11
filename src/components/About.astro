@@ -1,4 +1,6 @@
 ---
+import type { ContactLink } from "../types/portfolio";
+
 interface Props {
   name: string;
   about: {
@@ -6,61 +8,159 @@ interface Props {
     title: string;
     bio: string;
     cta: string;
+    viewProjects?: string;
   };
   location?: string;
+  contactLinks?: ContactLink[];
 }
 
-const { name, about, location } = Astro.props;
+const { name, about, location, contactLinks } = Astro.props;
 ---
 
 <section
   id="about"
-  class="min-h-[calc(100vh-4rem)] flex items-center py-16 hero-gradient"
+  class="min-h-[calc(100vh-4rem)] flex items-center py-20"
+  aria-labelledby="about-heading"
 >
-  <div class="max-w-4xl mx-auto px-6">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div class="order-2 md:order-1">
-        <p class="text-emerald-600 font-medium mb-2 animate-pulse">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col lg:flex-row-reverse items-center lg:items-start gap-12 lg:gap-20">
+      <div class="flex-1 text-center lg:text-left">
+        <p class="text-emerald-600 font-medium mb-4 hero-greeting opacity-0">
           {about.greeting}
         </p>
+        
         <h1
-          class="text-5xl md:text-6xl font-bold text-stone-900 dark:text-white mb-1"
+          id="about-heading"
+          class="text-3xl md:text-4xl lg:text-5xl font-bold text-stone-900 dark:text-white mb-2 hero-name opacity-0"
         >
           {name}
         </h1>
-        <p class="text-xl text-stone-500 dark:text-stone-400 mb-2">
-          {about.title}
-        </p>
+        
+        <div class="hero-title opacity-0 mb-6">
+          <span class="inline-block px-6 py-3 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-2xl md:text-3xl lg:text-4xl font-semibold rounded-2xl">
+            {about.title}
+          </span>
+        </div>
+        
         {
           location && (
-            <p class="text-stone-400 dark:text-stone-500 mb-6">📍 {location}</p>
+            <div class="hero-location opacity-0 flex items-center justify-center lg:justify-start gap-2 mb-6">
+              <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
+              <span class="text-stone-500 dark:text-stone-400">{location}</span>
+            </div>
           )
         }
-        <p
-          class="text-stone-600 dark:text-stone-300 mb-8 max-w-lg leading-relaxed"
-        >
+        
+        <p class="text-base text-stone-500 dark:text-stone-400 mb-8 max-w-md mx-auto lg:mx-0 leading-relaxed hero-bio opacity-0">
           {about.bio}
         </p>
-        <a
-          href="#contact"
-          class="inline-block bg-emerald-600 text-white px-8 py-3 rounded-full font-medium hover:bg-emerald-700 transition-all hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/30"
-        >
-          {about.cta}
-        </a>
-      </div>
-      <div class="order-1 md:order-2 flex justify-center">
-        <div class="relative">
-          <div
-            class="absolute inset-0 bg-emerald-500 rounded-full blur-2xl opacity-30 animate-pulse-glow"
+        
+        <div class="flex flex-wrap gap-4 justify-center lg:justify-start hero-cta opacity-0">
+          <a
+            href="#contact"
+            class="inline-block bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-8 py-3 rounded-full font-medium hover:bg-emerald-600 dark:hover:bg-emerald-500 transition-colors"
           >
-          </div>
-          <img
-            src="/avatar.jpeg"
-            alt={name}
-            class="relative w-64 h-64 rounded-full object-cover shadow-xl border-4 border-white/20 dark:border-white/10 animate-float"
-          />
+            {about.cta}
+          </a>
+          <a
+            href="#projects"
+            class="inline-block border-2 border-stone-300 dark:border-stone-600 text-stone-700 dark:text-stone-300 px-8 py-3 rounded-full font-medium hover:border-emerald-500 hover:text-emerald-600 transition-colors"
+          >
+            {about.viewProjects || 'Ver proyectos'}
+          </a>
         </div>
+        
+        {contactLinks && contactLinks.length > 0 && (
+          <div class="flex flex-wrap gap-3 justify-center lg:justify-start mt-6 hero-contact opacity-0">
+            {contactLinks.map((link) => (
+              <a
+                href={link.url}
+                target={link.url.startsWith('http') ? "_blank" : undefined}
+                rel={link.url.startsWith('http') ? "noopener noreferrer" : undefined}
+                class="text-sm text-stone-500 dark:text-stone-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors flex items-center gap-2"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {link.name === 'Email' && (
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  )}
+                  {link.name === 'LinkedIn' && (
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  )}
+                  {link.name === 'Phone' && (
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                  )}
+                </svg>
+                {link.url.replace('mailto:', '').replace('tel:', '')}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+      
+      <div class="hero-avatar opacity-0 order-first lg:order-last">
+        <img
+          src="/avatar.jpeg"
+          alt={name}
+          class="w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-3xl object-cover shadow-2xl"
+          loading="eager"
+        />
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+  
+  tl.to(".hero-greeting", {
+    opacity: 1,
+    duration: 0.6,
+    delay: 0.3
+  })
+  .to(".hero-name", {
+    opacity: 1,
+    duration: 0.8
+  }, "-=0.4")
+  .to(".hero-title", {
+    opacity: 1,
+    duration: 0.6
+  }, "-=0.5")
+  .to(".hero-location", {
+    opacity: 1,
+    duration: 0.5
+  }, "-=0.3")
+  .to(".hero-bio", {
+    opacity: 1,
+    duration: 0.6
+  }, "-=0.3")
+  .to(".hero-cta", {
+    opacity: 1,
+    duration: 0.6
+  }, "-=0.4")
+  .to(".hero-avatar", {
+    opacity: 1,
+    duration: 1,
+    ease: "power2.out"
+  }, "-=0.8");
+  
+  gsap.utils.toArray(".fade-in-up").forEach((el: any) => {
+    gsap.fromTo(el, 
+      { autoAlpha: 0, y: 40 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.6,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 90%",
+          toggleActions: "play none none none"
+        }
+      }
+    );
+  });
+</script>
