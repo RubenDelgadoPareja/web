@@ -1,93 +1,116 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import About from '../../components/About.astro';
-import Experience from '../../components/Experience.astro';
-import Projects from '../../components/Projects.astro';
-import Skills from '../../components/Skills.astro';
-import Contact from '../../components/Contact.astro';
-import type { Experience as ExperienceType, Project, SkillCategory, ContactLink } from '../../types/portfolio';
-import { translations } from '../../i18n/utils';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import About from "../../components/About.astro";
+import Experience from "../../components/Experience.astro";
+import Projects from "../../components/Projects.astro";
+import Skills from "../../components/Skills.astro";
+import Contact from "../../components/Contact.astro";
+import type {
+  Experience as ExperienceType,
+  Project,
+  SkillCategory,
+  ContactLink,
+} from "../../types/portfolio";
+import { translations } from "../../i18n/utils";
 
-const lang = 'en';
+const lang = "en";
 const t = translations[lang];
 
 const experience: ExperienceType[] = [
   {
-    id: '1',
-    company: 'Nazaries Intelligence',
-    role: 'Intermediate Software Developer',
-    period: '2025 - Present',
-    description: 'As an Intermediate developer, I became familiar with CLEAN and hexagonal architecture, improving design patterns and React render performance. I worked on a massive forms project, initially with Formik and then React-hook-form. We implemented reactivity with Mobx and started using dependency injection with Inversify. Form validations were done with class-validator but we migrated to Zod. Later, I worked with El Corte Inglés developing the ticket purchase gateway for theaters.',
-    technologies: ['React', 'TypeScript', 'MobX', 'Inversify', 'Zod', 'React Hook Form', 'CLEAN Architecture', 'El Corte Inglés']
+    id: "1",
+    company: "Nazaries Intelligence",
+    role: "Intermediate Software Developer",
+    period: "2025 - Present",
+    description:
+      "As an Intermediate developer, I became familiar with CLEAN and hexagonal architecture, improving design patterns and React render performance. I worked on a massive forms project, initially with Formik and then React-hook-form. We implemented reactivity with Mobx and started using dependency injection with Inversify. Form validations were done with class-validator but we migrated to Zod. Later, I worked with El Corte Inglés developing the ticket purchase gateway for theaters.",
+    technologies: [
+      "React",
+      "TypeScript",
+      "MobX",
+      "Inversify",
+      "Zod",
+      "React Hook Form",
+      "CLEAN Architecture",
+    ],
   },
   {
-    id: '2',
-    company: 'Nazaries Intelligence',
-    role: 'Junior Software Developer',
-    period: '2023 - 2025',
-    description: 'Working as a Junior Software Developer, I continued using Ruby on Rails but realized it was not for me and moved into the UI world. I started learning JavaScript and React while supporting teams with new designs. I also customized some WordPress styles. I tried Angular and applied this knowledge in a virtual library project for children with Santillana. Additionally, I learned Vue.js with Nuxt in the same project and a bit of Node.js with MongoDB.',
-    technologies: ['React', 'Angular', 'Vue.js', 'Nuxt', 'Node.js', 'MongoDB', 'JavaScript', 'WordPress', 'Jest']
+    id: "2",
+    company: "Nazaries Intelligence",
+    role: "Junior Software Developer",
+    period: "2023 - 2025",
+    description:
+      "Working as a Junior Software Developer, I continued using Ruby on Rails but realized it was not for me and moved into the UI world. I started learning JavaScript and React while supporting teams with new designs. I also customized some WordPress styles. I tried Angular and applied this knowledge in a virtual library project for children with Santillana. Additionally, I learned Vue.js with Nuxt in the same project and a bit of Node.js with MongoDB.",
+    technologies: [
+      "React",
+      "Angular",
+      "Vue.js",
+      "Nuxt",
+      "Node.js",
+      "MongoDB",
+      "JavaScript",
+      "WordPress",
+      "Jest",
+    ],
   },
   {
-    id: '3',
-    company: 'Nazaries Intelligence',
-    role: 'Internship',
-    period: '2022 - 2023',
-    description: 'During my internship I started learning Ruby on Rails and got familiar with the MVC pattern. Learned to use Docker containers and Git. Had the opportunity to work on internal company projects, maintain client projects and new developments.',
-    technologies: ['Ruby on Rails', 'MVC', 'Docker', 'Git']
-  }
-    description: 'During my internship I started learning Ruby on Rails and got familiar with the MVC pattern. Learned to use Docker containers and Git. Had the opportunity to work on internal company projects, maintain client projects and new developments.',
-    technologies: ['JavaScript', 'HTML', 'CSS', 'React']
-  }
+    id: "3",
+    company: "Nazaries Intelligence",
+    role: "Internship",
+    period: "2022 - 2023",
+    description:
+      "During my internship I started learning Ruby on Rails and got familiar with the MVC pattern. Learned to use Docker containers and Git. Had the opportunity to work on internal company projects, maintain client projects and new developments.",
+    technologies: ["Ruby on Rails", "MVC", "Docker", "Git"],
+  },
 ];
 
 const projects: Project[] = [];
 
 const skills: SkillCategory[] = [
   {
-    name: 'Tech Stack',
+    name: "Tech Stack",
     skills: [
-      { name: 'React.js' },
-      { name: 'TypeScript' },
-      { name: 'Vite' },
-      { name: 'Vitest' },
-      { name: 'Docker' }
-    ]
+      { name: "React.js" },
+      { name: "TypeScript" },
+      { name: "Vite" },
+      { name: "Vitest" },
+      { name: "Docker" },
+    ],
   },
   {
-    name: 'Soft Skills',
+    name: "Soft Skills",
     skills: [
-      { name: 'Teamworker' },
-      { name: 'Responsible' },
-      { name: 'Problem Solving' },
-      { name: 'Independent' },
-      { name: 'Hard Working' }
-    ]
+      { name: "Teamworker" },
+      { name: "Responsible" },
+      { name: "Problem Solving" },
+      { name: "Independent" },
+      { name: "Hard Working" },
+    ],
   },
   {
-    name: 'Languages',
-    skills: [
-      { name: 'Spanish (Native)' },
-      { name: 'English (B2)' }
-    ]
-  }
+    name: "Languages",
+    skills: [{ name: "Spanish (Native)" }, { name: "English (B2)" }],
+  },
 ];
 
 const contactLinks: ContactLink[] = [
-  { name: 'Email', url: 'mailto:ruben051199@gmail.com' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/rubén-delgado-pareja-baaa67206' },
-  { name: 'Phone', url: 'tel:+34662000647' }
+  { name: "Email", url: "mailto:ruben051199@gmail.com" },
+  {
+    name: "LinkedIn",
+    url: "https://linkedin.com/in/rubén-delgado-pareja-baaa67206",
+  },
+  { name: "Phone", url: "tel:+34662000647" },
 ];
 ---
 
 <BaseLayout title="Ruben Delgado - Frontend Software Developer" lang={lang}>
-  <About 
-    name="Ruben Delgado" 
-    about={t.about}
-    location="Granada, Spain"
-  />
+  <About name="Ruben Delgado" about={t.about} location="Granada, Spain" />
   <Experience experiences={experience} title={t.experience.title} />
   <Projects projects={projects} title={t.projects} />
   <Skills categories={skills} title={t.skills.title} />
-  <Contact links={contactLinks} title={t.contact.title} description={t.contact.description} />
+  <Contact
+    links={contactLinks}
+    title={t.contact.title}
+    description={t.contact.description}
+  />
 </BaseLayout>

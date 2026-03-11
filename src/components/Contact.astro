@@ -1,5 +1,5 @@
 ---
-import type { ContactLink } from '../types/portfolio';
+import type { ContactLink } from "../types/portfolio";
 
 interface Props {
   links: ContactLink[];
@@ -10,21 +10,29 @@ interface Props {
 const { links, title, description } = Astro.props;
 ---
 
-<section id="contact" class="py-16 bg-stone-900 dark:bg-black text-white">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-4">{title}</h2>
-    <p class="text-stone-400 mb-8">{description}</p>
-    <div class="flex flex-wrap justify-center gap-4">
-      {links.map((link) => (
-        <a 
-          href={link.url} 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="px-6 py-3 bg-stone-800 dark:bg-stone-800 border border-stone-700 rounded-lg font-medium hover:bg-emerald-600 hover:border-emerald-600 transition-all"
-        >
-          {link.name}
-        </a>
-      ))}
+<section id="contact" class="py-16">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="glass-card rounded-3xl p-12 text-center">
+      <h2 class="text-3xl font-bold text-stone-900 dark:text-white mb-4">
+        {title}
+      </h2>
+      <p class="text-stone-600 dark:text-stone-300 mb-8 max-w-md mx-auto">
+        {description}
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        {
+          links.map((link) => (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-8 py-3 bg-emerald-600 text-white rounded-full font-medium hover:bg-emerald-700 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/30 transition-all"
+            >
+              {link.name}
+            </a>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>

@@ -13,25 +13,53 @@ interface Props {
 const { name, about, location } = Astro.props;
 ---
 
-<section id="about" class="min-h-[calc(100vh-4rem)] flex items-center py-16">
+<section
+  id="about"
+  class="min-h-[calc(100vh-4rem)] flex items-center py-16 hero-gradient"
+>
   <div class="max-w-4xl mx-auto px-6">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div class="order-2 md:order-1">
-        <p class="text-emerald-600 font-medium mb-2">{about.greeting}</p>
-        <h1 class="text-5xl font-bold text-stone-900 dark:text-white mb-1">{name}</h1>
-        <p class="text-xl text-stone-500 dark:text-stone-400 mb-2">{about.title}</p>
-        {location && <p class="text-stone-400 dark:text-stone-500 mb-6">📍 {location}</p>}
-        <p class="text-stone-600 dark:text-stone-300 mb-8 max-w-lg leading-relaxed">{about.bio}</p>
-        <a href="#contact" class="inline-block bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors">
+        <p class="text-emerald-600 font-medium mb-2 animate-pulse">
+          {about.greeting}
+        </p>
+        <h1
+          class="text-5xl md:text-6xl font-bold text-stone-900 dark:text-white mb-1"
+        >
+          {name}
+        </h1>
+        <p class="text-xl text-stone-500 dark:text-stone-400 mb-2">
+          {about.title}
+        </p>
+        {
+          location && (
+            <p class="text-stone-400 dark:text-stone-500 mb-6">📍 {location}</p>
+          )
+        }
+        <p
+          class="text-stone-600 dark:text-stone-300 mb-8 max-w-lg leading-relaxed"
+        >
+          {about.bio}
+        </p>
+        <a
+          href="#contact"
+          class="inline-block bg-emerald-600 text-white px-8 py-3 rounded-full font-medium hover:bg-emerald-700 transition-all hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/30"
+        >
           {about.cta}
         </a>
       </div>
       <div class="order-1 md:order-2 flex justify-center">
-        <img 
-          src="/avatar.jpeg" 
-          alt={name}
-          class="w-64 h-64 rounded-full object-cover shadow-xl"
-        />
+        <div class="relative">
+          <div
+            class="absolute inset-0 bg-emerald-500 rounded-full blur-2xl opacity-30 animate-pulse-glow"
+          >
+          </div>
+          <img
+            src="/avatar.jpeg"
+            alt={name}
+            class="relative w-64 h-64 rounded-full object-cover shadow-xl border-4 border-white/20 dark:border-white/10 animate-float"
+          />
+        </div>
       </div>
     </div>
   </div>
