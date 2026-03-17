@@ -7,6 +7,12 @@ interface Props {
 }
 
 const { title, lang } = Astro.props;
+
+const legalLinks = [
+  { href: "/cookies", labelEs: "Cookies", labelEn: "Cookies" },
+  { href: "/privacidad", labelEs: "Privacidad", labelEn: "Privacy" },
+  { href: "/legal", labelEs: "Legal", labelEn: "Legal" },
+];
 ---
 
 <!doctype html>
@@ -14,8 +20,10 @@ const { title, lang } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={lang === "es" ? "Página legal" : "Legal page"} />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={`https://ruben-delgado.dev${Astro.url.pathname}`} />
     <script is:inline>
       const theme =
         localStorage.getItem("theme") ||
@@ -25,15 +33,102 @@ const { title, lang } = Astro.props;
       document.documentElement.classList.toggle("dark", theme === "dark");
     </script>
   </head>
-  <body class="bg-stone-50 dark:bg-stone-900 text-stone-800 dark:text-stone-100 min-h-screen">
-    <header class="py-8 text-center">
-      <a href={lang === "es" ? "/" : "/en/"} class="text-2xl font-bold text-blue-600 hover:scale-110 transition-transform">RD</a>
+  <body class="bg-stone-50 dark:bg-stone-900 text-stone-800 dark:text-stone-100 min-h-screen flex flex-col">
+    <header class="py-6 border-b border-stone-200 dark:border-stone-700">
+      <div class="max-w-3xl mx-auto px-6 flex items-center justify-between">
+        <a href={lang === "es" ? "/" : "/en/"} class="text-xl font-bold text-primary hover:opacity-80 transition-opacity">
+          RD
+        </a>
+        <a href={lang === "es" ? "/" : "/en/"} class="text-sm text-stone-500 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
+          ← {lang === "es" ? "Volver al inicio" : "Back to home"}
+        </a>
+      </div>
     </header>
-    <main class="max-w-3xl mx-auto px-6 py-12">
-      <slot />
+    
+    <main class="flex-1 max-w-3xl mx-auto px-6 py-12 w-full">
+      <article class="prose prose-stone dark:prose-invert max-w-none">
+        <slot />
+      </article>
     </main>
-    <footer class="py-8 text-center text-stone-500 text-sm">
-      <p>&copy; {new Date().getFullYear()} Ruben Delgado.</p>
+    
+    <footer class="py-6 border-t border-stone-200 dark:border-stone-700">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+          <p class="text-stone-500 dark:text-stone-400">
+            © {new Date().getFullYear()} Ruben Delgado.
+          </p>
+          <nav aria-label="Legal">
+            <ul class="flex gap-6">
+              {legalLinks.map((link) => (
+                <li>
+                  <a 
+                    href={link.href} 
+                    class="text-stone-500 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors"
+                  >
+                    {lang === "es" ? link.labelEs : link.labelEn}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
+
+<style is:global>
+  .prose h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-stone-900);
+    margin-bottom: 2rem;
+  }
+  :global(.dark) .prose h1 {
+    color: white;
+  }
+  .prose h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-stone-900);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  :global(.dark) .prose h2 {
+    color: white;
+  }
+  .prose p {
+    color: var(--color-stone-600);
+    margin-bottom: 1rem;
+    line-height: 1.625;
+  }
+  :global(.dark) .prose p {
+    color: var(--color-stone-300);
+  }
+  .prose ul {
+    margin: 1rem 0 1rem 1.5rem;
+    list-style-type: disc;
+    color: var(--color-stone-600);
+  }
+  :global(.dark) .prose ul {
+    color: var(--color-stone-300);
+  }
+  .prose ul li {
+    margin-bottom: 0.5rem;
+  }
+  .prose a {
+    color: var(--color-primary);
+  }
+  :global(.dark) .prose a {
+    color: var(--color-primary-dark);
+  }
+  .prose a:hover {
+    text-decoration: underline;
+  }
+  .prose strong {
+    color: var(--color-stone-900);
+  }
+  :global(.dark) .prose strong {
+    color: white;
+  }
+</style>

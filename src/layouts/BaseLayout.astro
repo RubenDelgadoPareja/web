@@ -167,10 +167,31 @@ const descriptions = {
     
     <!-- Footer -->
     <footer class="py-8 border-t border-stone-200 dark:border-stone-700" role="contentinfo">
-      <div class="max-w-4xl mx-auto px-6 text-center">
-        <p class="text-stone-500 dark:text-stone-400 text-sm">
-          © {new Date().getFullYear()} Ruben Delgado. {t.footer.rights}
-        </p>
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <p class="text-stone-500 dark:text-stone-400 text-sm">
+            © {new Date().getFullYear()} Ruben Delgado. {t.footer.rights}
+          </p>
+          <nav aria-label="Legal links">
+            <ul class="flex flex-wrap justify-center gap-6 text-sm">
+              <li>
+                <a href="/cookies" class="text-stone-500 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
+                  {lang === "es" ? "Política de Cookies" : "Cookie Policy"}
+                </a>
+              </li>
+              <li>
+                <a href="/privacidad" class="text-stone-500 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
+                  {lang === "es" ? "Política de Privacidad" : "Privacy Policy"}
+                </a>
+              </li>
+              <li>
+                <a href="/legal" class="text-stone-500 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
+                  {lang === "es" ? "Aviso Legal" : "Legal Notice"}
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </footer>
   </body>

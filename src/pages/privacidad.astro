@@ -1,53 +1,49 @@
 ---
 import LegalLayout from '../layouts/LegalLayout.astro';
-import { translations } from '../i18n/utils';
-
-const lang = "es";
-const t = translations[lang];
 ---
 
-<LegalLayout title="Política de Privacidad | Ruben Delgado" lang={lang}>
-  <h1 class="text-3xl font-bold mb-8">Política de Privacidad</h1>
+<LegalLayout title="Política de Privacidad | Ruben Delgado" lang="es">
+  <h1>Política de Privacidad</h1>
   
-  <p class="mb-6">Última actualización: {new Date().toLocaleDateString('es-ES')}</p>
+  <p>Última actualización: {new Date().toLocaleDateString('es-ES')}</p>
 
-  <section class="mb-8">
-    <h2 class="text-xl font-semibold mb-4">1. Información que recopilamos</h2>
-    <p class="text-stone-600 dark:text-stone-300 mb-4">
+  <section>
+    <h2>1. Información que recopilamos</h2>
+    <p>
       Este sitio web es un portfolio personal. No recopilamos información personal de los visitantes 
       más allá de los datos que tú mismo proporciones voluntariamente a través de los enlaces de contacto.
     </p>
   </section>
 
-  <section class="mb-8">
-    <h2 class="text-xl font-semibold mb-4">2. Uso de la información</h2>
-    <p class="text-stone-600 dark:text-stone-300 mb-4">
+  <section>
+    <h2>2. Uso de la información</h2>
+    <p>
       La información que me proporciones a través de email o LinkedIn será utilizada exclusivamente 
       para responder a tu consulta o mensaje.
     </p>
   </section>
 
-  <section class="mb-8">
-    <h2 class="text-xl font-semibold mb-4">3. Cookies</h2>
-    <p class="text-stone-600 dark:text-stone-300 mb-4">
+  <section>
+    <h2>3. Cookies</h2>
+    <p>
       Este sitio web utiliza cookies exclusivamente para preferencias de tema (claro/oscuro). 
       No utilizamos cookies de análisis ni cookies de terceros con fines publicitarios.
     </p>
   </section>
 
-  <section class="mb-8">
-    <h2 class="text-xl font-semibold mb-4">4. Enlaces a terceros</h2>
-    <p class="text-stone-600 dark:text-stone-300 mb-4">
+  <section>
+    <h2>4. Enlaces a terceros</h2>
+    <p>
       Este sitio puede contener enlaces a sitios web de terceros. No somos responsables 
       de las prácticas de privacidad de dichos sitios.
     </p>
   </section>
 
-  <section class="mb-8">
-    <h2 class="text-xl font-semibold mb-4">5. Contacto</h2>
-    <p class="text-stone-600 dark:text-stone-300 mb-4">
+  <section>
+    <h2>5. Contacto</h2>
+    <p>
       Si tienes alguna pregunta sobre esta política de privacidad, puedes contactarme en 
-      <a href="mailto:ruben051199@gmail.com" class="text-blue-600 hover:underline">ruben051199@gmail.com</a>
+      <a href="mailto:ruben051199@gmail.com">ruben051199@gmail.com</a>
     </p>
   </section>
 </LegalLayout>
