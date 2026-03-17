@@ -76,7 +76,7 @@ const descriptions = {
 
     {showNav && (
       <header class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md border-b border-stone-200 dark:border-stone-700 z-50" role="banner">
-        <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between" role="navigation" aria-label="Main navigation">
+        <nav class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between" role="navigation" aria-label="Main navigation">
           <a href={lang === "es" ? "/" : "/en/"} class="text-xl font-bold text-primary" aria-label="Ruben Delgado - Home">
             RD
           </a>
@@ -161,7 +161,7 @@ const descriptions = {
       </header>
     )}
 
-    <main id="main-content" class={showNav ? "pt-20" : ""} tabindex="-1" role="main">
+    <main id="main-content" class={showNav ? "pt-16" : ""} tabindex="-1" role="main">
       <slot />
     </main>
     
