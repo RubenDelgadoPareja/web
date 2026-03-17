@@ -13,6 +13,14 @@ interface Props {
 const { title, lang, showNav = true } = Astro.props;
 
 const t = translations[lang];
+
+const siteUrl = "https://ruben-delgado.dev";
+const currentUrl = Astro.url;
+
+const descriptions = {
+  es: "Desarrollador Frontend especializado en React con TypeScript. +2 años de experiencia creando aplicaciones web modernas y responsivas.",
+  en: "Frontend Developer specialized in React with TypeScript. +2 years of experience building modern and responsive web applications."
+};
 ---
 
 <!doctype html>
@@ -20,14 +28,34 @@ const t = translations[lang];
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content={lang === "es"
-        ? "Portfolio de Desarrollador Frontend"
-        : "Frontend Developer Portfolio"}
-    />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={descriptions[lang]} />
+    <meta name="author" content="Ruben Delgado" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={`${siteUrl}${currentUrl.pathname}`} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={`${siteUrl}${currentUrl.pathname}`} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={descriptions[lang]} />
+    <meta property="og:site_name" content="Ruben Delgado - Frontend Developer" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={`${siteUrl}${currentUrl.pathname}`} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={descriptions[lang]} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" hreflang="es" href={`${siteUrl}/`} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}/en/`} />
+    
     <script is:inline>
       const theme =
         localStorage.getItem("theme") ||
@@ -38,47 +66,113 @@ const t = translations[lang];
     </script>
   </head>
   <body class="bg-stone-50 dark:bg-stone-900 text-stone-800 dark:text-stone-100 transition-colors">
+    <!-- Skip Link for Accessibility -->
+    <a 
+      href="#main-content" 
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:outline-none"
+    >
+      {lang === "es" ? "Saltar al contenido principal" : "Skip to main content"}
+    </a>
+
     {showNav && (
-      <header class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md border-b border-stone-200 dark:border-stone-700 z-50">
-        <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <a href={lang === "es" ? "/" : "/en/"} class="text-xl font-bold text-primary">
+      <header class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md border-b border-stone-200 dark:border-stone-700 z-50" role="banner">
+        <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between" role="navigation" aria-label="Main navigation">
+          <a href={lang === "es" ? "/" : "/en/"} class="text-xl font-bold text-primary" aria-label="Ruben Delgado - Home">
             RD
           </a>
           
-          <ul class="hidden md:flex items-center gap-8">
-            <li>
-              <a href="#about" class="text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
+          <!-- Desktop Navigation -->
+          <ul class="hidden md:flex items-center gap-8" role="menubar">
+            <li role="none">
+              <a href="#about" class="text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
                 {t.nav.about}
               </a>
             </li>
-            <li>
-              <a href="#experience" class="text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
+            <li role="none">
+              <a href="#experience" class="text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
                 {t.nav.experience}
               </a>
             </li>
-            <li>
-              <a href="#projects" class="text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
+            <li role="none">
+              <a href="#projects" class="text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
                 {t.nav.projects}
               </a>
             </li>
-            <li>
-              <a href="#skills" class="text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
+            <li role="none">
+              <a href="#skills" class="text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
                 {t.nav.skills}
               </a>
             </li>
           </ul>
           
-          <div class="flex items-center gap-3">
+          <!-- Mobile Menu Button -->
+          <button 
+            id="mobile-menu-btn"
+            class="md:hidden p-2 text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark focus:outline-none focus:ring-2 focus:ring-primary rounded-lg"
+            aria-label={lang === "es" ? "Abrir menú" : "Open menu"}
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 menu-open" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 menu-close hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          
+          <div class="hidden md:flex items-center gap-3">
             <ThemeToggle lang={lang} />
             <LanguageSelector currentLang={lang} client:load />
           </div>
         </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-stone-900 border-t border-stone-200 dark:border-stone-700" role="menu">
+          <ul class="px-6 py-4 space-y-4">
+            <li role="none">
+              <a href="#about" class="block text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
+                {t.nav.about}
+              </a>
+            </li>
+            <li role="none">
+              <a href="#experience" class="block text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
+                {t.nav.experience}
+              </a>
+            </li>
+            <li role="none">
+              <a href="#projects" class="block text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
+                {t.nav.projects}
+              </a>
+            </li>
+            <li role="none">
+              <a href="#skills" class="block text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
+                {t.nav.skills}
+              </a>
+            </li>
+            <li class="pt-4 border-t border-stone-200 dark:border-stone-700">
+              <div class="flex items-center gap-3">
+                <ThemeToggle lang={lang} />
+                <LanguageSelector currentLang={lang} client:load />
+              </div>
+            </li>
+          </ul>
+        </div>
       </header>
     )}
 
-    <main class={showNav ? "pt-20" : ""}>
+    <main id="main-content" class={showNav ? "pt-20" : ""} tabindex="-1" role="main">
       <slot />
     </main>
+    
+    <!-- Footer -->
+    <footer class="py-8 border-t border-stone-200 dark:border-stone-700" role="contentinfo">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <p class="text-stone-500 dark:text-stone-400 text-sm">
+          © {new Date().getFullYear()} Ruben Delgado. {t.footer.rights}
+        </p>
+      </div>
+    </footer>
   </body>
 </html>
 
@@ -109,4 +203,28 @@ const t = translations[lang];
       }
     );
   });
+  
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+      mobileMenuBtn.setAttribute('aria-expanded', String(!isExpanded));
+      mobileMenu.classList.toggle('hidden');
+      mobileMenuBtn.querySelector('.menu-open')?.classList.toggle('hidden');
+      mobileMenuBtn.querySelector('.menu-close')?.classList.toggle('hidden');
+    });
+    
+    // Close menu when clicking on a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.querySelector('.menu-open')?.classList.remove('hidden');
+        mobileMenuBtn.querySelector('.menu-close')?.classList.add('hidden');
+      });
+    });
+  }
 </script>

@@ -69,11 +69,11 @@ const getIcon = (name: string) => {
       </div>
       
       <div class="order-1 md:order-2 fade-in-up" style="animation-delay: 200ms">
-        <div class="relative mb-6">
-          <div class="absolute inset-0 bg-primary/20 dark:bg-primary-dark/20 rounded-3xl transform rotate-3"></div>
+        <div class="relative mb-6" role="img" aria-label={`${name} - ${about.title}`}>
+          <div class="absolute inset-0 bg-primary/20 dark:bg-primary-dark/20 rounded-3xl transform rotate-3" aria-hidden="true"></div>
           <img 
             src="/avatar.jpeg" 
-            alt={name}
+            alt={`${name} - ${about.title}`}
             class="relative rounded-3xl shadow-2xl w-full max-w-md mx-auto object-cover aspect-square"
           />
         </div>
