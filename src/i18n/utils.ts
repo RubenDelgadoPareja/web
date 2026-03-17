@@ -1,6 +1,13 @@
 import es from './es.json';
 import en from './en.json';
-import type { Es, En } from './index';
+
+const resources = {
+  es,
+  en
+} as const;
+
+type Es = typeof es;
+type En = typeof en;
 
 export const translations = {
   es: es as Es,

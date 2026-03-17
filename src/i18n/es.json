@@ -19,7 +19,9 @@
   "projects": {
     "title": "Proyectos",
     "demo": "Ver demo",
-    "github": "GitHub"
+    "github": "GitHub",
+    "comingSoon": "Próximamente...",
+    "workingOn": "Estoy trabajando en nuevos proyectos. ¡Mantente atento!"
   },
   "skills": {
     "title": "Habilidades"

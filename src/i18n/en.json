@@ -19,7 +19,9 @@
   "projects": {
     "title": "Projects",
     "demo": "View demo",
-    "github": "GitHub"
+    "github": "GitHub",
+    "comingSoon": "Coming soon...",
+    "workingOn": "I'm working on new projects. Stay tuned!"
   },
   "skills": {
     "title": "Skills"

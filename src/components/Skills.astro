@@ -6,35 +6,218 @@ interface Props {
   title: string;
 }
 
-const { categories, title } = Astro.props;
+const { categories = [], title } = Astro.props;
+
+const allSkills = categories?.flatMap((category) =>
+  category.skills?.map((skill) => ({ ...skill, category: category.name })) ?? []
+) ?? [];
+
+const categoryColors: Record<string, { bg: string; border: string; text: string; hover: string }> = {
+  "Tech Stack": { bg: "bg-blue-100 dark:bg-blue-900/40", border: "border-blue-200 dark:border-blue-700/50", text: "text-blue-700 dark:text-blue-300", hover: "hover:border-blue-500" },
+  "Soft Skills": { bg: "bg-purple-100 dark:bg-purple-900/40", border: "border-purple-200 dark:border-purple-700/50", text: "text-purple-700 dark:text-purple-300", hover: "hover:border-purple-500" },
+  "Languages": { bg: "bg-green-100 dark:bg-green-900/40", border: "border-green-200 dark:border-green-700/50", text: "text-green-700 dark:text-green-300", hover: "hover:border-green-500" },
+  "Idiomas": { bg: "bg-green-100 dark:bg-green-900/40", border: "border-green-200 dark:border-green-700/50", text: "text-green-700 dark:text-green-300", hover: "hover:border-green-500" },
+};
+
+const getCategoryColor = (categoryName: string) => {
+  const keys = Object.keys(categoryColors);
+  const colorIndex = keys.indexOf(categoryName) % keys.length;
+  return categoryColors[keys[colorIndex]] || categoryColors["Tech Stack"];
+};
 ---
 
 <section id="skills" class="py-20" aria-labelledby="skills-heading">
-  <div class="max-w-6xl mx-auto px-6">
+  <div class="max-w-4xl mx-auto px-6">
     <h2
       id="skills-heading"
       class="text-4xl md:text-5xl font-bold text-stone-900 dark:text-white mb-12 relative pb-4 fade-in-up"
     >
       {title}
+      <span class="absolute bottom-0 left-0 w-24 h-1 bg-primary rounded-full"></span>
     </h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      {
-        categories.map((category, index) => (
-          <div class="glass-card rounded-3xl p-8 fade-in-up group hover:-translate-y-2 transition-transform duration-300" style={`transition-delay: ${index * 0.1}s`}>
-            <h3 class="text-lg font-semibold text-emerald-600 dark:text-emerald-400 mb-6 flex items-center gap-2">
-              <span class="w-8 h-0.5 bg-emerald-500"></span>
-              {category.name}
-            </h3>
-            <div class="flex flex-wrap gap-3">
-              {category.skills.map((skill) => (
-                <span class="text-sm px-4 py-2 bg-stone-100 dark:bg-white/5 text-stone-700 dark:text-stone-300 rounded-xl border border-stone-200 dark:border-white/10 hover:border-emerald-500/50 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all cursor-default">
-                  {skill.name}
-                </span>
-              ))}
-            </div>
+
+    <div id="skills-grid" class="flex flex-wrap gap-3 justify-center">
+      {allSkills.map((skill, index) => {
+        const colors = getCategoryColor(skill.category);
+        return (
+          <div 
+            class={`skill-card cursor-grab active:cursor-grabbing px-4 py-2 rounded-2xl border shadow-md hover:shadow-xl transition-all duration-300 select-none whitespace-nowrap ${colors.bg} ${colors.border} ${colors.text} ${colors.hover}`}
+            data-index={index}
+            data-category={skill.category}
+            draggable="true"
+          >
+            <span class="text-sm font-medium block text-center">
+              {skill.name}
+            </span>
           </div>
-        ))
-      }
+        );
+      })}
     </div>
   </div>
 </section>
+
+<script>
+  const grid = document.getElementById('skills-grid');
+  
+  if (grid) {
+    const cards = grid.querySelectorAll('.skill-card');
+    let draggedItem: HTMLElement | null = null;
+    let startY = 0;
+    let startX = 0;
+    let currentX = 0;
+
+    cards.forEach((card) => {
+      const el = card as HTMLElement;
+      
+      el.addEventListener('dragstart', (e) => {
+        draggedItem = el;
+        el.style.opacity = '0.5';
+        el.style.zIndex = '1000';
+        (e as DragEvent).dataTransfer?.setData('text/plain', el.dataset.index || '');
+      });
+
+      el.addEventListener('dragend', () => {
+        if (draggedItem) {
+          draggedItem.style.opacity = '1';
+          draggedItem.style.zIndex = '';
+          draggedItem = null;
+        }
+      });
+
+      el.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        if (draggedItem && draggedItem !== el) {
+          const rect = el.getBoundingClientRect();
+          const midX = rect.left + rect.width / 2;
+          
+          if (currentX < midX && Math.abs(currentX - midX) < rect.width / 2) {
+            grid.insertBefore(draggedItem, el);
+          } else if (currentX > midX && Math.abs(currentX - midX) < rect.width / 2) {
+            grid.insertBefore(draggedItem, el.nextSibling);
+          }
+        }
+      });
+
+      el.addEventListener('mousedown', (e) => {
+        startX = e.clientX;
+        el.style.transition = 'none';
+        el.style.position = 'relative';
+        el.style.zIndex = '1000';
+      });
+
+      el.addEventListener('mousemove', (e) => {
+        if (el.style.position !== 'relative') return;
+        
+        currentX = e.clientX;
+        const deltaX = currentX - startX;
+        el.style.transform = `translate(${deltaX}px, 0)`;
+        
+        const rect = el.getBoundingClientRect();
+        const midX = rect.left + rect.width / 2;
+        
+        cards.forEach((other) => {
+          if (other === el) return;
+          const otherRect = (other as HTMLElement).getBoundingClientRect();
+          const otherMidX = otherRect.left + otherRect.width / 2;
+          
+          if (Math.abs(midX - otherMidX) < rect.width / 2) {
+            if (deltaX > 0 && midX > otherMidX) {
+              grid.insertBefore(el, other.nextSibling);
+              startX = currentX;
+            } else if (deltaX < 0 && midX < otherMidX) {
+              grid.insertBefore(el, other);
+              startX = currentX;
+            }
+          }
+        });
+      });
+
+      el.addEventListener('mouseup', () => {
+        el.style.transition = 'transform 0.3s ease';
+        el.style.transform = '';
+        el.style.position = '';
+        el.style.zIndex = '';
+      });
+
+      el.addEventListener('mouseleave', () => {
+        if (el.style.position === 'relative') {
+          el.style.transition = 'transform 0.3s ease';
+          el.style.transform = '';
+          el.style.position = '';
+          el.style.zIndex = '';
+        }
+      });
+
+      el.addEventListener('touchstart', (e) => {
+        startX = (e as TouchEvent).touches[0].clientX;
+        el.style.transition = 'none';
+        el.style.position = 'relative';
+        el.style.zIndex = '1000';
+      });
+
+      el.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        currentX = (e as TouchEvent).touches[0].clientX;
+        const deltaX = currentX - startX;
+        el.style.transform = `translate(${deltaX}px, 0)`;
+        
+        const rect = el.getBoundingClientRect();
+        const midX = rect.left + rect.width / 2;
+        
+        cards.forEach((other) => {
+          if (other === el) return;
+          const otherRect = (other as HTMLElement).getBoundingClientRect();
+          const otherMidX = otherRect.left + otherRect.width / 2;
+          
+          if (Math.abs(midX - otherMidX) < rect.width / 2) {
+            if (deltaX > 0 && midX > otherMidX) {
+              grid.insertBefore(el, other.nextSibling);
+              startX = currentX;
+            } else if (deltaX < 0 && midX < otherMidX) {
+              grid.insertBefore(el, other);
+              startX = currentX;
+            }
+          }
+        });
+      });
+
+      el.addEventListener('touchend', () => {
+        el.style.transition = 'transform 0.3s ease';
+        el.style.transform = '';
+        el.style.position = '';
+        el.style.zIndex = '';
+      });
+    });
+  }
+</script>
+
+<style>
+  .skill-card {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .skill-card:nth-child(2n) {
+    animation-delay: -1.5s;
+  }
+  
+  .skill-card:nth-child(3n) {
+    animation-delay: -0.75s;
+  }
+  
+  .skill-card:nth-child(4n) {
+    animation-delay: -2s;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  .skill-card:hover {
+    animation-play-state: paused;
+  }
+</style>

@@ -18,7 +18,7 @@ export default function LanguageSelector({ currentLang }: Props) {
           href={href}
           className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-200 ${
             currentLang === code
-              ? 'bg-emerald-600 text-white shadow-sm'
+              ? 'bg-primary text-white shadow-sm'
               : 'text-stone-500 hover:text-stone-700 hover:bg-stone-200'
           }`}
         >
