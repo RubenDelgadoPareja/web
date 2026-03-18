@@ -11,15 +11,16 @@ export default function LanguageSelector({ currentLang }: Props) {
   ] as const;
 
   return (
-    <div className="flex items-center gap-1 bg-stone-100 rounded-lg p-1">
+    <div className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-stone-300 bg-stone-100 p-1 dark:border-stone-600 dark:bg-stone-800">
       {languages.map(({ code, label, href }) => (
         <a
           key={code}
           href={href}
-          className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-200 ${
+          aria-current={currentLang === code ? 'page' : undefined}
+          className={`rounded-md px-2.5 py-1.5 text-[11px] font-medium uppercase tracking-wide transition-colors sm:px-3 sm:text-xs ${
             currentLang === code
-              ? 'bg-primary text-white shadow-sm'
-              : 'text-stone-500 hover:text-stone-700 hover:bg-stone-200'
+              ? 'bg-white text-stone-900 dark:bg-stone-700 dark:text-white'
+              : 'text-stone-600 hover:text-stone-900 dark:text-stone-300 dark:hover:text-white'
           }`}
         >
           {label}

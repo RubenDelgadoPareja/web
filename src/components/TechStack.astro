@@ -1,0 +1,119 @@
+---
+interface Props {
+  technologies: string[];
+  title: string;
+}
+
+const { technologies, title } = Astro.props;
+
+const techIcons: Record<string, string> = {
+  React: "logos:react",
+  TypeScript: "logos:typescript-icon",
+  MobX: "logos:mobx",
+  Angular: "logos:angular-icon",
+  "Vue.js": "logos:vue",
+  Nuxt: "logos:nuxt-icon",
+  "Node.js": "logos:nodejs-icon",
+  MongoDB: "logos:mongodb-icon",
+  JavaScript: "logos:javascript",
+  WordPress: "logos:wordpress-icon",
+  Jest: "logos:jest",
+  "Ruby on Rails": "logos:ruby",
+  Docker: "logos:docker-icon",
+  Git: "logos:git-icon",
+  Vite: "logos:vitejs",
+  Vitest: "logos:vitest",
+};
+
+const getIcon = (tech: string) => techIcons[tech];
+const technologiesWithIcons = technologies.filter((tech) =>
+  Boolean(getIcon(tech)),
+);
+---
+
+<section id="tech-stack" class="py-20" aria-labelledby="tech-stack-heading">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2
+      id="tech-stack-heading"
+      class="text-4xl md:text-5xl font-bold text-stone-900 dark:text-white mb-12 relative pb-4 fade-in-up"
+    >
+      {title}
+      <span class="absolute bottom-0 left-0 w-24 h-1 bg-primary rounded-full"
+      ></span>
+    </h2>
+
+    <div
+      id="tech-stack-grid"
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+    >
+      {
+        technologiesWithIcons.map((tech, index) => {
+          const iconName = getIcon(tech);
+          return (
+            <div
+              class="tech-card flex min-h-36 flex-col items-center justify-center rounded-2xl border border-stone-200 bg-stone-50 p-4 transition-all duration-300 hover:border-primary hover:shadow-lg dark:border-stone-700 dark:bg-stone-800/50 dark:hover:border-primary-dark"
+              style={`animation-delay: ${index * 50}ms`}
+            >
+              {iconName && (
+                <div
+                  class="mb-3 flex h-14 w-14 shrink-0 items-center justify-center md:h-16 md:w-16"
+                  aria-hidden="true"
+                >
+                  <iconify-icon
+                    icon={iconName}
+                    width="56"
+                    height="56"
+                    class="block md:h-16 md:w-16"
+                  />
+                </div>
+              )}
+              <span class="text-sm font-medium text-stone-700 dark:text-stone-300 text-center">
+                {tech}
+              </span>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import "iconify-icon";
+</script>
+
+<style>
+  .tech-card {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .tech-card:nth-child(2n) {
+    animation-delay: -1.5s;
+  }
+
+  .tech-card:nth-child(3n) {
+    animation-delay: -0.75s;
+  }
+
+  .tech-card:nth-child(4n) {
+    animation-delay: -2s;
+  }
+
+  .tech-card:nth-child(5n) {
+    animation-delay: -1s;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  .tech-card:hover {
+    animation-play-state: paused;
+  }
+</style>

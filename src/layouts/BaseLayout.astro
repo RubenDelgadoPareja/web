@@ -16,6 +16,7 @@ const t = translations[lang];
 
 const siteUrl = "https://ruben-delgado.dev";
 const currentUrl = Astro.url;
+const stackSectionId = "tech-stack";
 
 const descriptions = {
   es: "Desarrollador Frontend especializado en React con TypeScript. +2 años de experiencia creando aplicaciones web modernas y responsivas.",
@@ -29,7 +30,7 @@ const descriptions = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    
+
     <!-- Primary Meta Tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
@@ -37,25 +38,25 @@ const descriptions = {
     <meta name="author" content="Ruben Delgado" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={`${siteUrl}${currentUrl.pathname}`} />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={`${siteUrl}${currentUrl.pathname}`} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={descriptions[lang]} />
     <meta property="og:site_name" content="Ruben Delgado - Frontend Developer" />
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={`${siteUrl}${currentUrl.pathname}`} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={descriptions[lang]} />
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" hreflang="es" href={`${siteUrl}/`} />
     <link rel="alternate" hreflang="en" href={`${siteUrl}/en/`} />
-    
+
     <script is:inline>
       const theme =
         localStorage.getItem("theme") ||
@@ -67,8 +68,8 @@ const descriptions = {
   </head>
   <body class="bg-stone-50 dark:bg-stone-900 text-stone-800 dark:text-stone-100 transition-colors">
     <!-- Skip Link for Accessibility -->
-    <a 
-      href="#main-content" 
+    <a
+      href="#main-content"
       class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:outline-none"
     >
       {lang === "es" ? "Saltar al contenido principal" : "Skip to main content"}
@@ -80,12 +81,17 @@ const descriptions = {
           <a href={lang === "es" ? "/" : "/en/"} class="text-xl font-bold text-primary" aria-label="Ruben Delgado - Home">
             RD
           </a>
-          
+
           <!-- Desktop Navigation -->
           <ul class="hidden md:flex items-center gap-8" role="menubar">
             <li role="none">
               <a href="#about" class="text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
                 {t.nav.about}
+              </a>
+            </li>
+            <li role="none">
+              <a href={`#${stackSectionId}`} class="text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
+                {t.nav.skills}
               </a>
             </li>
             <li role="none">
@@ -98,41 +104,42 @@ const descriptions = {
                 {t.nav.projects}
               </a>
             </li>
-            <li role="none">
-              <a href="#skills" class="text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
-                {t.nav.skills}
-              </a>
-            </li>
           </ul>
-          
-          <!-- Mobile Menu Button -->
-          <button 
-            id="mobile-menu-btn"
-            class="md:hidden p-2 text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark focus:outline-none focus:ring-2 focus:ring-primary rounded-lg"
-            aria-label={lang === "es" ? "Abrir menú" : "Open menu"}
-            aria-expanded="false"
-            aria-controls="mobile-menu"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 menu-open" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 menu-close hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-          
-          <div class="hidden md:flex items-center gap-3">
+
+          <div class="flex items-center gap-2">
+            <LanguageSelector currentLang={lang} />
+
+            <!-- Mobile Menu Button -->
+            <button
+              id="mobile-menu-btn"
+              class="md:hidden p-2 text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark focus:outline-none focus:ring-2 focus:ring-primary rounded-lg"
+              aria-label={lang === "es" ? "Abrir menú" : "Open menu"}
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 menu-open" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 menu-close hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
             <ThemeToggle lang={lang} />
-            <LanguageSelector currentLang={lang} client:load />
           </div>
         </nav>
-        
+
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-stone-900 border-t border-stone-200 dark:border-stone-700" role="menu">
           <ul class="px-6 py-4 space-y-4">
             <li role="none">
               <a href="#about" class="block text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
                 {t.nav.about}
+              </a>
+            </li>
+            <li role="none">
+              <a href={`#${stackSectionId}`} class="block text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
+                {t.nav.skills}
               </a>
             </li>
             <li role="none">
@@ -145,15 +152,9 @@ const descriptions = {
                 {t.nav.projects}
               </a>
             </li>
-            <li role="none">
-              <a href="#skills" class="block text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
-                {t.nav.skills}
-              </a>
-            </li>
             <li class="pt-4 border-t border-stone-200 dark:border-stone-700">
               <div class="flex items-center gap-3">
                 <ThemeToggle lang={lang} />
-                <LanguageSelector currentLang={lang} client:load />
               </div>
             </li>
           </ul>
@@ -164,7 +165,7 @@ const descriptions = {
     <main id="main-content" class={showNav ? "pt-16" : ""} tabindex="-1" role="main">
       <slot />
     </main>
-    
+
     <!-- Footer -->
     <footer class="py-8 border-t border-stone-200 dark:border-stone-700" role="contentinfo">
       <div class="max-w-4xl mx-auto px-6">
@@ -200,16 +201,16 @@ const descriptions = {
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-   
+
   gsap.registerPlugin(ScrollTrigger);
-   
+
   const animateElements = document.querySelectorAll(".fade-in-up, .fade-in-left, .fade-in-right");
-   
+
   animateElements.forEach((el) => {
-    gsap.fromTo(el, 
-      { 
-        autoAlpha: 0, 
-        y: 50 
+    gsap.fromTo(el,
+      {
+        autoAlpha: 0,
+        y: 50
       },
       {
         autoAlpha: 1,
@@ -224,11 +225,11 @@ const descriptions = {
       }
     );
   });
-  
+
   // Mobile menu toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
-  
+
   if (mobileMenuBtn && mobileMenu) {
     mobileMenuBtn.addEventListener('click', () => {
       const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
@@ -237,7 +238,7 @@ const descriptions = {
       mobileMenuBtn.querySelector('.menu-open')?.classList.toggle('hidden');
       mobileMenuBtn.querySelector('.menu-close')?.classList.toggle('hidden');
     });
-    
+
     // Close menu when clicking on a link
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {

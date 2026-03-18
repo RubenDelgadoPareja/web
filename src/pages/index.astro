@@ -1,13 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import About from "../components/About.astro";
+import TechStack from "../components/TechStack.astro";
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
-import Skills from "../components/Skills.astro";
 import type {
   Experience as ExperienceType,
   Project,
-  SkillCategory,
   ContactLink,
 } from "../types/portfolio";
 import { translations } from "../i18n/utils";
@@ -39,7 +38,7 @@ const experience: ExperienceType[] = [
     role: "Desarrollador Software Junior",
     period: "2023 - 2025",
     description:
-      "Trabajando como Desarrollador Software Junior, continúe utilizando Ruby on Rails pero me di cuenta de que no era lo mío y me adentré en el mundo de la UI. Comencé aprendiendo JavaScript y React apoyando a equipos con nuevos diseños. También customicé estilos de WordPress. Probé Angular y apliqué estos conocimientos en un proyecto de biblioteca virtual para niños con Santillana. Además, aprendí Vue.js con Nuxt en el mismo proyecto y un poco de Node.js con MongoDB.",
+      "Trabajando como Desarrollador Software Junior, continue utilizando Ruby on Rails pero me di cuenta de que no era lo mío y me adentré en el mundo de la UI. Comencé aprendiendo JavaScript y React apoyando a equipos con nuevos diseños. También customicé estilos de WordPress. Probé Angular y apliqué estos conocimientos en un proyecto de biblioteca virtual para niños con Santillana. Además, aprendí Vue.js con Nuxt en el mismo proyecto y un poco de Node.js con MongoDB.",
     technologies: [
       "React",
       "Angular",
@@ -65,31 +64,24 @@ const experience: ExperienceType[] = [
 
 const projects: Project[] = [];
 
-const skills: SkillCategory[] = [
-  {
-    name: "Tech Stack",
-    skills: [
-      { name: "React.js" },
-      { name: "TypeScript" },
-      { name: "Vite" },
-      { name: "Vitest" },
-      { name: "Docker" },
-    ],
-  },
-  {
-    name: "Soft Skills",
-    skills: [
-      { name: "Trabajo en equipo" },
-      { name: "Responsable" },
-      { name: "Resolución de problemas" },
-      { name: "Independiente" },
-      { name: "Trabajador" },
-    ],
-  },
-  {
-    name: "Idiomas",
-    skills: [{ name: "Español (Nativo)" }, { name: "Inglés (B2)" }],
-  },
+const techStack = [
+  "React",
+  "TypeScript",
+  "MobX",
+  "Zod",
+  "React Hook Form",
+  "Angular",
+  "Vue.js",
+  "Nuxt",
+  "Node.js",
+  "MongoDB",
+  "JavaScript",
+  "WordPress",
+  "Jest",
+  "Ruby on Rails",
+  "Docker",
+  "Git",
+  "Vite",
 ];
 
 const contactLinks: ContactLink[] = [
@@ -104,7 +96,7 @@ const contactLinks: ContactLink[] = [
 
 <BaseLayout title="Ruben Delgado - Frontend Software Developer" lang={lang}>
   <About name="Ruben Delgado" about={t.about} location="Granada, Spain" contactLinks={contactLinks} />
+  <TechStack technologies={techStack} title={t.techStack.title} />
   <Experience experiences={experience} title={t.experience.title} />
   <Projects projects={projects} title={t.projects} />
-  <Skills categories={skills} title={t.skills.title} />
 </BaseLayout>

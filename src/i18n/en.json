@@ -3,7 +3,7 @@
     "about": "About",
     "experience": "Experience",
     "projects": "Projects",
-    "skills": "Skills",
+    "skills": "Tech Stack",
     "contact": "Contact"
   },
   "about": {
@@ -25,6 +25,9 @@
   },
   "skills": {
     "title": "Skills"
+  },
+  "techStack": {
+    "title": "Tech Stack"
   },
   "contact": {
     "title": "Contact",
