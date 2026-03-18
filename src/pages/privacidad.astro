@@ -1,58 +1,100 @@
 ---
-import LegalLayout from '../layouts/LegalLayout.astro';
+import LegalLayout from "../layouts/LegalLayout.astro";
 ---
 
-<LegalLayout title="Política de Privacidad | Ruben Delgado" lang="es">
+<LegalLayout
+  title="Política de Privacidad | Ruben Delgado"
+  lang="es"
+  description="Política de privacidad del sitio de Ruben Delgado sobre tratamiento de datos, uso de información de contacto y privacidad del usuario."
+>
   <div class="mb-10 border-b border-stone-200 pb-8 dark:border-stone-800">
-    <span class="inline-flex rounded-full border border-stone-300 bg-stone-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-stone-600 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300">
+    <span
+      class="inline-flex rounded-full border border-stone-300 bg-stone-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-stone-600 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300"
+    >
       Información legal
     </span>
-    <h1 class="mt-4 text-4xl font-bold tracking-tight text-stone-950 dark:text-white sm:text-5xl">Política de Privacidad</h1>
-    <p class="mt-4 max-w-3xl text-base leading-7 text-stone-600 dark:text-stone-300">
-      Esta política describe qué información puede recibirse a través del sitio y cómo se utiliza, siempre con un enfoque mínimo y respetuoso con la privacidad del usuario.
+    <h1
+      class="mt-4 text-4xl font-bold tracking-tight text-stone-950 dark:text-white sm:text-5xl"
+    >
+      Política de Privacidad
+    </h1>
+    <p
+      class="mt-4 max-w-3xl text-base leading-7 text-stone-600 dark:text-stone-300"
+    >
+      Esta política describe qué información puede recibirse a través del sitio
+      y cómo se utiliza, siempre con un enfoque mínimo y respetuoso con la
+      privacidad del usuario.
     </p>
-    <p class="mt-4 text-sm font-medium text-stone-500 dark:text-stone-400">Última actualización: {new Date().toLocaleDateString('es-ES')}</p>
+    <p class="mt-4 text-sm font-medium text-stone-500 dark:text-stone-400">
+      Última actualización: {new Date().toLocaleDateString("es-ES")}
+    </p>
   </div>
 
   <div class="space-y-6">
-  <section class="rounded-2xl border border-stone-200 bg-stone-50/80 p-6 dark:border-stone-800 dark:bg-stone-900/70">
-    <h2 class="text-xl font-semibold text-stone-950 dark:text-white">1. Información que recopilamos</h2>
-    <p class="mt-3 leading-7 text-stone-600 dark:text-stone-300">
-      Este sitio web es un portfolio personal. No recopilamos información personal de los visitantes
-      más allá de los datos que tú mismo proporciones voluntariamente a través de los enlaces de contacto.
-    </p>
-  </section>
+    <section
+      class="rounded-2xl border border-stone-200 bg-stone-50/80 p-6 dark:border-stone-800 dark:bg-stone-900/70"
+    >
+      <h2 class="text-xl font-semibold text-stone-950 dark:text-white">
+        1. Información que recopilamos
+      </h2>
+      <p class="mt-3 leading-7 text-stone-600 dark:text-stone-300">
+        Este sitio web es un portfolio personal. No recopilamos información
+        personal de los visitantes más allá de los datos que tú mismo
+        proporciones voluntariamente a través de los enlaces de contacto.
+      </p>
+    </section>
 
-  <section class="rounded-2xl border border-stone-200 bg-stone-50/80 p-6 dark:border-stone-800 dark:bg-stone-900/70">
-    <h2 class="text-xl font-semibold text-stone-950 dark:text-white">2. Uso de la información</h2>
-    <p class="mt-3 leading-7 text-stone-600 dark:text-stone-300">
-      La información que me proporciones a través de email o LinkedIn será utilizada exclusivamente
-      para responder a tu consulta o mensaje.
-    </p>
-  </section>
+    <section
+      class="rounded-2xl border border-stone-200 bg-stone-50/80 p-6 dark:border-stone-800 dark:bg-stone-900/70"
+    >
+      <h2 class="text-xl font-semibold text-stone-950 dark:text-white">
+        2. Uso de la información
+      </h2>
+      <p class="mt-3 leading-7 text-stone-600 dark:text-stone-300">
+        La información que me proporciones a través de email o LinkedIn será
+        utilizada exclusivamente para responder a tu consulta o mensaje.
+      </p>
+    </section>
 
-  <section class="rounded-2xl border border-stone-200 bg-stone-50/80 p-6 dark:border-stone-800 dark:bg-stone-900/70">
-    <h2 class="text-xl font-semibold text-stone-950 dark:text-white">3. Cookies</h2>
-    <p class="mt-3 leading-7 text-stone-600 dark:text-stone-300">
-      Este sitio web utiliza cookies exclusivamente para preferencias de tema (claro/oscuro).
-      No utilizamos cookies de análisis ni cookies de terceros con fines publicitarios.
-    </p>
-  </section>
+    <section
+      class="rounded-2xl border border-stone-200 bg-stone-50/80 p-6 dark:border-stone-800 dark:bg-stone-900/70"
+    >
+      <h2 class="text-xl font-semibold text-stone-950 dark:text-white">
+        3. Cookies
+      </h2>
+      <p class="mt-3 leading-7 text-stone-600 dark:text-stone-300">
+        Este sitio web utiliza cookies exclusivamente para preferencias de tema
+        (claro/oscuro). No utilizamos cookies de análisis ni cookies de terceros
+        con fines publicitarios.
+      </p>
+    </section>
 
-  <section class="rounded-2xl border border-stone-200 bg-stone-50/80 p-6 dark:border-stone-800 dark:bg-stone-900/70">
-    <h2 class="text-xl font-semibold text-stone-950 dark:text-white">4. Enlaces a terceros</h2>
-    <p class="mt-3 leading-7 text-stone-600 dark:text-stone-300">
-      Este sitio puede contener enlaces a sitios web de terceros. No somos responsables
-      de las prácticas de privacidad de dichos sitios.
-    </p>
-  </section>
+    <section
+      class="rounded-2xl border border-stone-200 bg-stone-50/80 p-6 dark:border-stone-800 dark:bg-stone-900/70"
+    >
+      <h2 class="text-xl font-semibold text-stone-950 dark:text-white">
+        4. Enlaces a terceros
+      </h2>
+      <p class="mt-3 leading-7 text-stone-600 dark:text-stone-300">
+        Este sitio puede contener enlaces a sitios web de terceros. No somos
+        responsables de las prácticas de privacidad de dichos sitios.
+      </p>
+    </section>
 
-  <section class="rounded-2xl border border-stone-200 bg-stone-50/80 p-6 dark:border-stone-800 dark:bg-stone-900/70">
-    <h2 class="text-xl font-semibold text-stone-950 dark:text-white">5. Contacto</h2>
-    <p class="mt-3 leading-7 text-stone-600 dark:text-stone-300">
-      Si tienes alguna pregunta sobre esta política de privacidad, puedes contactarme en
-      <a class="font-medium text-primary hover:underline dark:text-primary-dark" href="mailto:ruben051199@gmail.com">ruben051199@gmail.com</a>
-    </p>
-  </section>
+    <section
+      class="rounded-2xl border border-stone-200 bg-stone-50/80 p-6 dark:border-stone-800 dark:bg-stone-900/70"
+    >
+      <h2 class="text-xl font-semibold text-stone-950 dark:text-white">
+        5. Contacto
+      </h2>
+      <p class="mt-3 leading-7 text-stone-600 dark:text-stone-300">
+        Si tienes alguna pregunta sobre esta política de privacidad, puedes
+        contactarme en
+        <a
+          class="font-medium text-primary hover:underline dark:text-primary-dark"
+          href="mailto:ruben051199@gmail.com">ruben051199@gmail.com</a
+        >
+      </p>
+    </section>
   </div>
 </LegalLayout>

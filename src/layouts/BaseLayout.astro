@@ -8,19 +8,91 @@ interface Props {
   title: string;
   lang: "es" | "en";
   showNav?: boolean;
+  description?: string;
 }
 
-const { title, lang, showNav = true } = Astro.props;
+const { title, lang, showNav = true, description } = Astro.props;
 
 const t = translations[lang];
 
 const siteUrl = "https://ruben-delgado.dev";
 const currentUrl = Astro.url;
+const normalizedPath = currentUrl.pathname.endsWith("/")
+  ? currentUrl.pathname
+  : `${currentUrl.pathname}/`;
 const stackSectionId = "tech-stack";
+const canonicalUrl = `${siteUrl}${normalizedPath}`;
+const homeUrl = `${siteUrl}/`;
+const englishHomeUrl = `${siteUrl}/en/`;
+const ogImageUrl = `${siteUrl}/avatar.jpeg`;
+const locale = lang === "es" ? "es_ES" : "en_US";
+const alternateLocale = lang === "es" ? "en_US" : "es_ES";
 
 const descriptions = {
-  es: "Desarrollador Frontend especializado en React con TypeScript. +2 años de experiencia creando aplicaciones web modernas y responsivas.",
-  en: "Frontend Developer specialized in React with TypeScript. +2 years of experience building modern and responsive web applications."
+  es: "Portfolio de Ruben Delgado, desarrollador frontend especializado en React y TypeScript. Experiencia en interfaces modernas, arquitectura escalable y productos web orientados a negocio.",
+  en: "Portfolio of Ruben Delgado, a frontend developer specialized in React and TypeScript. Experience in modern interfaces, scalable architecture, and business-focused web products."
+};
+
+const pageDescription = description ?? descriptions[lang];
+
+const alternates =
+  normalizedPath === "/" || normalizedPath === "/en/"
+    ? [
+        { hrefLang: "es", href: homeUrl },
+        { hrefLang: "en", href: englishHomeUrl },
+        { hrefLang: "x-default", href: homeUrl },
+      ]
+    : [];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${siteUrl}/#person`,
+      name: 'Ruben Delgado',
+      url: `${siteUrl}/`,
+      image: ogImageUrl,
+      jobTitle: lang === 'es' ? 'Desarrollador Frontend' : 'Frontend Developer',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Granada',
+        addressCountry: 'ES',
+      },
+      email: 'mailto:ruben051199@gmail.com',
+      sameAs: ['https://linkedin.com/in/rubén-delgado-pareja-baaa67206'],
+      knowsAbout: ['React', 'TypeScript', 'JavaScript', 'Frontend Development', 'UI Engineering', 'Astro'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: 'Ruben Delgado Portfolio',
+      inLanguage: ['es', 'en'],
+      description: pageDescription,
+      author: {
+        '@id': `${siteUrl}/#person`,
+      },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${canonicalUrl}#webpage`,
+      url: canonicalUrl,
+      name: title,
+      description: pageDescription,
+      isPartOf: {
+        '@id': `${siteUrl}/#website`,
+      },
+      about: {
+        '@id': `${siteUrl}/#person`,
+      },
+      inLanguage: lang,
+      primaryImageOfPage: {
+        '@type': 'ImageObject',
+        url: ogImageUrl,
+      },
+    },
+  ],
 };
 ---
 
@@ -30,32 +102,46 @@ const descriptions = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f172a" />
 
     <!-- Primary Meta Tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
-    <meta name="description" content={descriptions[lang]} />
+    <meta name="description" content={pageDescription} />
     <meta name="author" content="Ruben Delgado" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={`${siteUrl}${currentUrl.pathname}`} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={`${siteUrl}${currentUrl.pathname}`} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={descriptions[lang]} />
+    <meta property="og:description" content={pageDescription} />
     <meta property="og:site_name" content="Ruben Delgado - Frontend Developer" />
+    <meta property="og:locale" content={locale} />
+    {alternates.length > 0 && <meta property="og:locale:alternate" content={alternateLocale} />}
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Ruben Delgado portfolio preview" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={`${siteUrl}${currentUrl.pathname}`} />
+    <meta property="twitter:url" content={canonicalUrl} />
     <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={descriptions[lang]} />
+    <meta property="twitter:description" content={pageDescription} />
+    <meta property="twitter:image" content={ogImageUrl} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate" hreflang="es" href={`${siteUrl}/`} />
-    <link rel="alternate" hreflang="en" href={`${siteUrl}/en/`} />
+    {alternates.map(({ hrefLang, href }) => (
+      <link rel="alternate" hreflang={hrefLang} href={href} />
+    ))}
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
     <script is:inline>
       const theme =
