@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Host: https://ruben-delgado.dev
 
-Sitemap: https://ruben-delgado.dev/sitemap.xml
+Sitemap: https://ruben-delgado.dev/sitemap-index.xml

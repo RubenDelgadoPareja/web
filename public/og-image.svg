@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Ruben Delgado - Frontend Engineer</title>
+  <desc id="desc">Portfolio preview for Ruben Delgado, Frontend Engineer specialized in React and TypeScript.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0f766e" />
+      <stop offset="100%" stop-color="#0ea5e9" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="1020" cy="140" r="220" fill="#0ea5e9" fill-opacity="0.10" />
+  <circle cx="190" cy="520" r="180" fill="#0f766e" fill-opacity="0.12" />
+
+  <rect x="80" y="90" width="1040" height="450" rx="30" fill="#ffffff" fill-opacity="0.85" stroke="#cbd5e1" />
+
+  <text x="130" y="200" fill="#0f172a" font-family="Georgia, serif" font-size="40" font-weight="700">
+    Ruben Delgado
+  </text>
+  <text x="130" y="255" fill="#0f766e" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="30" font-weight="600">
+    Frontend Engineer
+  </text>
+  <text x="130" y="320" fill="#334155" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="28">
+    React + TypeScript
+  </text>
+  <text x="130" y="368" fill="#334155" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="28">
+    Product-focused interfaces
+  </text>
+
+  <rect x="130" y="430" width="340" height="14" rx="7" fill="url(#accent)" />
+
+  <text x="130" y="495" fill="#475569" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="22">
+    ruben-delgado.dev
+  </text>
+</svg>
