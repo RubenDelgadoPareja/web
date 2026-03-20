@@ -8,25 +8,35 @@
   },
   "about": {
     "greeting": "Hola, soy",
-    "title": "Desarrollador Frontend",
-    "bio": "Ingeniero de Software con más de dos años de experiencia en el desarrollo de aplicaciones web. Especializado en React y TypeScript, he participado en proyectos internacionales con clientes de EE. UU. y actualmente colaboro en soluciones digitales para grandes compañías españolas como El Corte Inglés. Me interesa especialmente construir interfaces sólidas, mantenibles y orientadas a una buena experiencia de usuario.",
-    "availability": "Disponible para nuevos proyectos",
+    "title": "Frontend Engineer",
+    "bio": "Ayudo a equipos a construir interfaces mantenibles, rápidas y orientadas a negocio con React y TypeScript. He trabajado en producto real, formularios críticos y entornos con exigencia de escalabilidad para clientes internacionales y grandes compañías españolas como El Corte Inglés.",
+    "availability": "Disponible para equipos de producto",
+    "contactLabel": "Contacto rápido",
+    "valueProps": [
+      "Formularios complejos y flujos críticos para negocio.",
+      "Arquitectura mantenible para productos que tienen que escalar.",
+      "Colaboración fluida con producto, diseño y otros perfiles técnicos.",
+      "Criterio en UX, rendimiento y calidad de frontend en producción."
+    ],
     "metrics": {
       "experience": "+2 años",
-      "experienceLabel": "Experiencia profesional",
+      "experienceLabel": "Experiencia en producción",
       "projects": "10+",
       "projectsLabel": "Proyectos y colaboraciones",
       "focus": "React + TS",
-      "focusLabel": "Enfoque principal"
+      "focusLabel": "Especialidad principal"
     },
-    "cta": "Contactar",
-    "viewProjects": "Ver proyectos"
+    "cta": "Hablemos",
+    "viewProjects": "Ver experiencia"
   },
   "experience": {
     "title": "Experiencia"
   },
   "projects": {
     "title": "Proyectos",
+    "intro": "Una selección de trabajo y casos representativos de los contextos donde más valor aporto: frontend de producto, formularios complejos y flujos con impacto real en negocio.",
+    "selectedWork": "Contribuciones clave",
+    "impact": "Impacto y contexto",
     "demo": "Ver demo",
     "github": "GitHub",
     "comingSoon": "Próximamente...",

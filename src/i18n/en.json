@@ -8,25 +8,35 @@
   },
   "about": {
     "greeting": "Hi, I'm",
-    "title": "Frontend Software Developer",
-    "bio": "Software Engineer with more than two years of experience building web applications. Specialized in React and TypeScript, I have contributed to international projects for U.S. clients and currently collaborate on digital solutions for major Spanish companies such as El Corte Inglés. I am particularly interested in building robust, maintainable interfaces with a strong focus on user experience.",
-    "availability": "Available for new projects",
+    "title": "Frontend Engineer",
+    "bio": "I help teams build maintainable, fast, business-oriented interfaces with React and TypeScript. I have worked on real products, mission-critical form flows, and scalable frontend environments for international clients and major Spanish companies such as El Corte Inglés.",
+    "availability": "Available for product teams",
+    "contactLabel": "Quick contact",
+    "valueProps": [
+      "Complex forms and business-critical user flows.",
+      "Maintainable architecture for products that need to scale.",
+      "Smooth collaboration with product, design, and engineering teams.",
+      "Strong judgment on UX, frontend quality, and performance in production."
+    ],
     "metrics": {
       "experience": "2+ years",
-      "experienceLabel": "Professional experience",
+      "experienceLabel": "Production experience",
       "projects": "10+",
       "projectsLabel": "Projects and collaborations",
       "focus": "React + TS",
-      "focusLabel": "Primary focus"
+      "focusLabel": "Core specialization"
     },
-    "cta": "Get in touch",
-    "viewProjects": "View projects"
+    "cta": "Let's talk",
+    "viewProjects": "View experience"
   },
   "experience": {
     "title": "Experience"
   },
   "projects": {
     "title": "Projects",
+    "intro": "A selection of work and representative case studies from the environments where I bring the most value: product frontend, complex forms, and user flows with real business impact.",
+    "selectedWork": "Key contributions",
+    "impact": "Impact and context",
     "demo": "View demo",
     "github": "GitHub",
     "comingSoon": "Coming soon...",

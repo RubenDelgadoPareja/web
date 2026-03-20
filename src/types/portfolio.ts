@@ -4,13 +4,17 @@ export interface Experience {
   role: string;
   period: string;
   description: string;
+  highlights: string[];
   technologies: string[];
 }
 
 export interface Project {
   id: string;
   title: string;
+  label: string;
   description: string;
+  outcome: string;
+  highlights: string[];
   technologies: string[];
   link?: string;
   github?: string;
