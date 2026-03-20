@@ -9,14 +9,14 @@
   "about": {
     "greeting": "Hi, I'm",
     "title": "Frontend Engineer",
-    "bio": "I help teams build maintainable, fast, business-oriented interfaces with React and TypeScript. I have worked on real products, mission-critical form flows, and scalable frontend environments for international clients and major Spanish companies such as El Corte Inglés.",
-    "availability": "Available for product teams",
+    "bio": "I design and build solid React and TypeScript frontends for product teams that need speed without sacrificing quality. My focus is turning complex requirements into clear, scalable experiences that drive business results.",
+    "availability": "Open to new challenges",
     "contactLabel": "Quick contact",
     "valueProps": [
-      "Complex forms and business-critical user flows.",
-      "Maintainable architecture for products that need to scale.",
-      "Smooth collaboration with product, design, and engineering teams.",
-      "Strong judgment on UX, frontend quality, and performance in production."
+      "Complex forms and critical user flows, without friction.",
+      "Maintainable frontend architecture built to scale with confidence.",
+      "Close collaboration with product, design, and backend teams.",
+      "Practical judgment on UX, performance, and production quality."
     ],
     "metrics": {
       "experience": "2+ years",

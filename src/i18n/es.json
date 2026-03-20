@@ -9,14 +9,14 @@
   "about": {
     "greeting": "Hola, soy",
     "title": "Frontend Engineer",
-    "bio": "Ayudo a equipos a construir interfaces mantenibles, rápidas y orientadas a negocio con React y TypeScript. He trabajado en producto real, formularios críticos y entornos con exigencia de escalabilidad para clientes internacionales y grandes compañías españolas como El Corte Inglés.",
-    "availability": "Disponible para equipos de producto",
+    "bio": "Diseño y desarrollo frontends sólidos con React y TypeScript para equipos de producto que necesitan velocidad sin sacrificar calidad. Me enfoco en convertir requisitos complejos en experiencias claras, escalables y orientadas a resultados de negocio.",
+    "availability": "Disponible para nuevos retos",
     "contactLabel": "Contacto rápido",
     "valueProps": [
-      "Formularios complejos y flujos críticos para negocio.",
-      "Arquitectura mantenible para productos que tienen que escalar.",
-      "Colaboración fluida con producto, diseño y otros perfiles técnicos.",
-      "Criterio en UX, rendimiento y calidad de frontend en producción."
+      "Formularios complejos y flujos críticos sin fricción.",
+      "Arquitectura frontend mantenible para escalar con confianza.",
+      "Trabajo codo a codo con producto, diseño y backend.",
+      "Decisiones con criterio en UX, rendimiento y calidad en producción."
     ],
     "metrics": {
       "experience": "+2 años",
