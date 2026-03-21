@@ -9,7 +9,8 @@
   "about": {
     "greeting": "Hola, soy",
     "title": "Frontend Engineer",
-    "bio": "Diseño y desarrollo frontends sólidos con React y TypeScript para equipos de producto que necesitan velocidad sin sacrificar calidad. Me enfoco en convertir requisitos complejos en experiencias claras, escalables y orientadas a resultados de negocio.",
+    "bioLine1": "Diseño y desarrollo frontends sólidos con React y TypeScript para equipos de producto que necesitan velocidad sin sacrificar calidad.",
+    "bioLine2": "Me enfoco en convertir requisitos complejos en experiencias claras, escalables y orientadas a resultados de negocio.",
     "availability": "Disponible para nuevos retos",
     "contactLabel": "Contacto rápido",
     "valueProps": [

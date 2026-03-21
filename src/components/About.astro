@@ -6,7 +6,8 @@ interface Props {
   about: {
     greeting: string;
     title: string;
-    bio: string;
+    bioLine1: string;
+    bioLine2: string;
     availability: string;
     contactLabel: string;
     valueProps: string[];
@@ -49,29 +50,34 @@ const getIcon = (name: string) => {
 
 <section
   id="about"
-  class="min-h-screen flex items-center py-24"
+  class="flex min-h-screen items-center border-b border-[var(--line)] bg-[var(--surface)] py-24"
   aria-labelledby="about-heading"
 >
-  <div class="max-w-3xl mx-auto px-6 w-full fade-in-up">
+  <div class="mx-auto w-full max-w-5xl px-6 fade-in-up">
     <span
-      class="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-700"
+      class="mb-8 inline-flex items-center gap-2 rounded-sm border border-[var(--line)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]"
     >
-      <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+      <span class="h-1.5 w-1.5 rounded-full bg-[var(--accent)]"></span>
       {about.availability}
     </span>
 
-    <p class="mb-2 text-lg text-primary">{about.greeting}</p>
-    <h1 id="about-heading" class="mb-3 text-6xl font-bold text-stone-900">
+    <p class="mb-3 text-sm uppercase tracking-[0.22em] text-[var(--muted)]">
+      {about.greeting}
+    </p>
+    <h1
+      id="about-heading"
+      class="mb-3 text-5xl font-semibold leading-tight text-[var(--text)] md:text-7xl"
+    >
       {name}
     </h1>
-    <p class="mb-6 text-2xl font-semibold text-primary">
+    <p class="mb-8 inline-flex border-b border-[color:color-mix(in_srgb,var(--accent)_35%,white)] pb-1 text-xl font-medium text-[var(--accent)] md:text-2xl">
       {about.title}
     </p>
 
-    <div class="mb-6 flex items-center gap-2 text-stone-500">
+    <div class="mb-8 flex items-center gap-2 text-sm text-[var(--muted)]">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-5 w-5 shrink-0"
+        class="h-4 w-4 shrink-0"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -91,16 +97,21 @@ const getIcon = (name: string) => {
       <span>{location}</span>
     </div>
 
-    <p class="mb-10 text-lg leading-relaxed text-stone-600 max-w-xl">
-      {about.bio}
-    </p>
+    <div class="mb-12 max-w-2xl space-y-2 text-lg leading-relaxed text-[var(--muted)] md:text-xl">
+      <p>{about.bioLine1}</p>
+      <p>{about.bioLine2}</p>
+    </div>
 
     <div class="flex flex-wrap gap-3">
       {
-        contactLinks.map((link) => (
+        contactLinks.map((link, index) => (
           <a
             href={link.url}
-            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white text-sm font-medium hover:opacity-90 transition-opacity"
+            class={`inline-flex items-center gap-2 rounded-sm border px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] transition-colors ${
+              index === 0
+                ? "border-[var(--accent)] bg-[var(--accent)] text-white"
+                : "border-[var(--line)] bg-[var(--surface)] text-[var(--text)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
+            }`}
             target={
               link.name.toLowerCase() === "linkedin" ? "_blank" : undefined
             }

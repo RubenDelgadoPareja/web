@@ -9,7 +9,8 @@
   "about": {
     "greeting": "Hi, I'm",
     "title": "Software Engineer",
-    "bio": "Software engineer focused on React and TypeScript. Building product frontend at Nazaries Intelligence since 2022.",
+    "bioLine1": "Software engineer focused on React and TypeScript.",
+    "bioLine2": "Building product frontend at Nazaries Intelligence since 2022.",
     "availability": "Open to new challenges",
     "contactLabel": "Quick contact",
     "valueProps": [
