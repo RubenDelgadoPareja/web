@@ -28,13 +28,13 @@ const { projects, title } = Astro.props;
       <span class="absolute bottom-0 left-0 w-24 h-1 bg-primary rounded-full"
       ></span>
     </h2>
-    {title.intro && (
-      <p
-        class="mb-10 max-w-3xl text-lg leading-relaxed text-stone-600 fade-in-up"
-      >
-        {title.intro}
-      </p>
-    )}
+    {
+      title.intro && (
+        <p class="mb-10 max-w-3xl text-lg leading-relaxed text-stone-600 fade-in-up">
+          {title.intro}
+        </p>
+      )
+    }
     {
       projects.length === 0 ? (
         <div class="glass-card rounded-2xl p-12 text-center fade-in-up">

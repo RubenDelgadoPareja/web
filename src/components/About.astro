@@ -61,10 +61,7 @@ const getIcon = (name: string) => {
     </span>
 
     <p class="mb-2 text-lg text-primary">{about.greeting}</p>
-    <h1
-      id="about-heading"
-      class="mb-3 text-6xl font-bold text-stone-900"
-    >
+    <h1 id="about-heading" class="mb-3 text-6xl font-bold text-stone-900">
       {name}
     </h1>
     <p class="mb-6 text-2xl font-semibold text-primary">
@@ -89,8 +86,7 @@ const getIcon = (name: string) => {
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-        ></path>
+          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
       </svg>
       <span>{location}</span>
     </div>
@@ -105,8 +101,14 @@ const getIcon = (name: string) => {
           <a
             href={link.url}
             class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white text-sm font-medium hover:opacity-90 transition-opacity"
-            target={link.name.toLowerCase() === "linkedin" ? "_blank" : undefined}
-            rel={link.name.toLowerCase() === "linkedin" ? "noopener noreferrer" : undefined}
+            target={
+              link.name.toLowerCase() === "linkedin" ? "_blank" : undefined
+            }
+            rel={
+              link.name.toLowerCase() === "linkedin"
+                ? "noopener noreferrer"
+                : undefined
+            }
           >
             <span aria-hidden="true" set:html={getIcon(link.name)} />
             <span>{link.name}</span>
