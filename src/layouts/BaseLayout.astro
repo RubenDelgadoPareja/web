@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import LanguageSelector from "../components/LanguageSelector";
 import ThemeToggle from "../components/ThemeToggle.astro";
+import Analytics from "@vercel/analytics/astro";
 import { translations } from "../i18n/utils";
 
 interface Props {
@@ -284,6 +285,7 @@ const structuredData = {
         </div>
       </div>
     </footer>
+    <Analytics />
   </body>
 </html>
 
