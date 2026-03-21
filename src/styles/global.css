@@ -50,6 +50,24 @@ span {
   animation: fadeInUp 0.65s ease forwards;
 }
 
+@media (min-width: 1024px) {
+  .chapter-section {
+    transition: opacity 0.35s ease, transform 0.35s ease, filter 0.35s ease;
+  }
+
+  .chapter-section[data-active="false"] {
+    opacity: 0.62;
+    transform: scale(0.992);
+    filter: saturate(0.86);
+  }
+
+  .chapter-section[data-active="true"] {
+    opacity: 1;
+    transform: scale(1);
+    filter: saturate(1);
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

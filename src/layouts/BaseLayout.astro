@@ -23,54 +23,62 @@ const canonicalUrl = `${siteUrl}${normalizedPath}`;
 const ogImageUrl = `${siteUrl}/og-image.svg`;
 const sitemapUrl = `${siteUrl}/sitemap-index.xml`;
 
-const pageDescription = description ?? "Portfolio of Ruben Delgado, a software engineer specializing in React and TypeScript.";
-
+const pageDescription =
+  description ??
+  "Portfolio of Ruben Delgado, a software engineer specializing in React and TypeScript.";
 
 const structuredData = {
-  '@context': 'https://schema.org',
-  '@graph': [
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      '@type': 'Person',
-      '@id': `${siteUrl}/#person`,
-      name: 'Ruben Delgado',
+      "@type": "Person",
+      "@id": `${siteUrl}/#person`,
+      name: "Ruben Delgado",
       url: `${siteUrl}/`,
       image: ogImageUrl,
-      jobTitle: 'Software Engineer',
+      jobTitle: "Software Engineer",
       address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Granada',
-        addressCountry: 'ES',
+        "@type": "PostalAddress",
+        addressLocality: "Granada",
+        addressCountry: "ES",
       },
-      email: 'mailto:ruben051199@gmail.com',
-      sameAs: ['https://linkedin.com/in/rubén-delgado-pareja-baaa67206'],
-      knowsAbout: ['React', 'TypeScript', 'JavaScript', 'Frontend Development', 'UI Engineering', 'Astro'],
+      email: "mailto:ruben051199@gmail.com",
+      sameAs: ["https://linkedin.com/in/rubén-delgado-pareja-baaa67206"],
+      knowsAbout: [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "Frontend Development",
+        "UI Engineering",
+        "Astro",
+      ],
     },
     {
-      '@type': 'WebSite',
-      '@id': `${siteUrl}/#website`,
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
       url: siteUrl,
-      name: 'Ruben Delgado Portfolio',
-      inLanguage: ['en'],
+      name: "Ruben Delgado Portfolio",
+      inLanguage: ["en"],
       description: pageDescription,
       author: {
-        '@id': `${siteUrl}/#person`,
+        "@id": `${siteUrl}/#person`,
       },
     },
     {
-      '@type': 'WebPage',
-      '@id': `${canonicalUrl}#webpage`,
+      "@type": "WebPage",
+      "@id": `${canonicalUrl}#webpage`,
       url: canonicalUrl,
       name: title,
       description: pageDescription,
       isPartOf: {
-        '@id': `${siteUrl}/#website`,
+        "@id": `${siteUrl}/#website`,
       },
       about: {
-        '@id': `${siteUrl}/#person`,
+        "@id": `${siteUrl}/#person`,
       },
       inLanguage: lang,
       primaryImageOfPage: {
-        '@type': 'ImageObject',
+        "@type": "ImageObject",
         url: ogImageUrl,
       },
     },
@@ -93,9 +101,17 @@ const structuredData = {
     <meta name="title" content={title} />
     <meta name="description" content={pageDescription} />
     <meta name="author" content="Ruben Delgado" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="sitemap" type="application/xml" title="Sitemap" href={sitemapUrl} />
+    <link
+      rel="sitemap"
+      type="application/xml"
+      title="Sitemap"
+      href={sitemapUrl}
+    />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -120,7 +136,10 @@ const structuredData = {
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
   </head>
   <body class="bg-[var(--bg)] text-[var(--text)]">
     <!-- Skip Link for Accessibility -->
@@ -131,82 +150,61 @@ const structuredData = {
       Skip to main content
     </a>
 
-    {showNav && (
-      <header class="fixed top-0 left-0 right-0 z-50 border-b border-[var(--line)] bg-[var(--surface)]/95 backdrop-blur" role="banner">
-        <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4" role="navigation" aria-label="Main navigation">
-          <a href="/" class="text-lg font-semibold tracking-tight text-[var(--text)]" aria-label="Ruben Delgado - Home">
-            RD
-          </a>
-
-          <!-- Desktop Navigation -->
-          <ul class="hidden items-center gap-8 md:flex" role="menubar">
-            <li role="none">
-              <a href="#about" class="text-xs uppercase tracking-[0.22em] text-[var(--muted)] hover:text-[var(--text)]" role="menuitem">
-                {t.nav.about}
-              </a>
-            </li>
-            <li role="none">
-              <a href="#experience" class="text-xs uppercase tracking-[0.22em] text-[var(--muted)] hover:text-[var(--text)]" role="menuitem">
-                {t.nav.experience}
-              </a>
-            </li>
-            <li role="none">
-              <a href="#projects" class="text-xs uppercase tracking-[0.22em] text-[var(--muted)] hover:text-[var(--text)]" role="menuitem">
-                {t.nav.projects}
-              </a>
-            </li>
-          </ul>
-
-          <div class="flex items-center">
-            <!-- Mobile Menu Button -->
-            <button
-              id="mobile-menu-btn"
-              class="rounded-md border border-[var(--line)] p-2 text-[var(--muted)] hover:text-[var(--text)] focus:outline-none md:hidden"
-              aria-label="Open menu"
-              aria-expanded="false"
-              aria-controls="mobile-menu"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 menu-open" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 menu-close hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+    {
+      showNav && (
+        <nav
+          id="section-rail"
+          class="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 lg:flex"
+          aria-label="Section chapters"
+        >
+          <div class="space-y-3 rounded-sm border border-[var(--line)] bg-[var(--surface)]/90 px-3 py-3 backdrop-blur">
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#about"
+                  data-section-link="about"
+                  class="group flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)]"
+                >
+                  <span class="h-1.5 w-1.5 rounded-full bg-[var(--line)] transition-colors" />
+                  <span>{t.nav.about}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#experience"
+                  data-section-link="experience"
+                  class="group flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)]"
+                >
+                  <span class="h-1.5 w-1.5 rounded-full bg-[var(--line)] transition-colors" />
+                  <span>{t.nav.experience}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#projects"
+                  data-section-link="projects"
+                  class="group flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)]"
+                >
+                  <span class="h-1.5 w-1.5 rounded-full bg-[var(--line)] transition-colors" />
+                  <span>{t.nav.projects}</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </nav>
+      )
+    }
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden border-t border-[var(--line)] bg-[color:var(--surface)] md:hidden" role="menu">
-          <ul class="px-6 py-4 space-y-4">
-            <li role="none">
-              <a href="#about" class="block text-xs uppercase tracking-[0.2em] text-[var(--muted)]" role="menuitem">
-                {t.nav.about}
-              </a>
-            </li>
-            <li role="none">
-              <a href="#experience" class="block text-xs uppercase tracking-[0.2em] text-[var(--muted)]" role="menuitem">
-                {t.nav.experience}
-              </a>
-            </li>
-            <li role="none">
-              <a href="#projects" class="block text-xs uppercase tracking-[0.2em] text-[var(--muted)]" role="menuitem">
-                {t.nav.projects}
-              </a>
-            </li>
-          </ul>
-        </div>
-      </header>
-    )}
-
-    <main id="main-content" class={showNav ? "pt-16" : ""} tabindex="-1" role="main">
+    <main id="main-content" class="" tabindex="-1" role="main">
       <slot />
     </main>
 
     <!-- Footer -->
     <footer class="border-t border-[var(--line)] py-8" role="contentinfo">
       <div class="mx-auto max-w-5xl px-6">
-        <p class="text-center text-xs uppercase tracking-[0.16em] text-[var(--muted)]">
+        <p
+          class="text-center text-xs uppercase tracking-[0.16em] text-[var(--muted)]"
+        >
           © {new Date().getFullYear()} Ruben Delgado
         </p>
       </div>
@@ -216,27 +214,76 @@ const structuredData = {
 </html>
 
 <script>
-  // Mobile menu toggle
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
+  const railLinks = Array.from(
+    document.querySelectorAll("[data-section-link]"),
+  );
 
-  if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
-      const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
-      mobileMenuBtn.setAttribute('aria-expanded', String(!isExpanded));
-      mobileMenu.classList.toggle('hidden');
-      mobileMenuBtn.querySelector('.menu-open')?.classList.toggle('hidden');
-      mobileMenuBtn.querySelector('.menu-close')?.classList.toggle('hidden');
+  const sectionIds = ["about", "experience", "projects"];
+  const sections = sectionIds
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
+
+  const goToSection = (id) => {
+    const target = document.getElementById(id);
+    if (!target) {
+      return;
+    }
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const updateRail = (activeId) => {
+    const index = sectionIds.indexOf(activeId);
+
+    sections.forEach((section) => {
+      section.setAttribute(
+        "data-active",
+        section.id === activeId ? "true" : "false",
+      );
     });
 
-    // Close menu when clicking on a link
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        mobileMenuBtn.querySelector('.menu-open')?.classList.remove('hidden');
-        mobileMenuBtn.querySelector('.menu-close')?.classList.add('hidden');
+    railLinks.forEach((link) => {
+      const isActive = link.getAttribute("data-section-link") === activeId;
+      const dot = link.querySelector("span");
+
+      link.classList.toggle("text-[var(--text)]", isActive);
+      link.classList.toggle("text-[var(--muted)]", !isActive);
+      link.setAttribute("aria-current", isActive ? "true" : "false");
+
+      if (dot) {
+        dot.classList.toggle("bg-[var(--accent)]", isActive);
+        dot.classList.toggle("bg-[var(--line)]", !isActive);
+      }
+    });
+  };
+
+  if (sections.length > 0) {
+    updateRail("about");
+
+    railLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const targetId = link.getAttribute("data-section-link");
+        if (targetId) {
+          goToSection(targetId);
+        }
       });
     });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target?.id) {
+          updateRail(visible.target.id);
+        }
+      },
+      {
+        threshold: [0.35, 0.6, 0.85],
+      },
+    );
+
+    sections.forEach((section) => observer.observe(section));
   }
 </script>

@@ -17,55 +17,24 @@ const experience: ExperienceType[] = [
   {
     id: "1",
     company: "Nazaries Intelligence",
-    role: "Mid-Level Software Developer",
-    period: "2025 – Present",
-    description: "",
+    role: "Software engineer",
+    period: "2022 – Present",
+    description:
+      "Working at Nazaries Intelligence from 2022 to the present, growing from internship to product-focused software engineer.",
     highlights: [
-      "Built the ticketing platform for El Corte Inglés — full purchase flow, seat selection, PGP payment gateway, expert staff channels, and post-sale area.",
-      "Led migration of complex form workflows from Formik to React Hook Form across a large-scale product.",
-      "Contributed to CLEAN and hexagonal architecture decisions; migrated validation from class-validator to Zod with Inversify DI.",
+      "Built the ticketing platform for El Corte Inglés, including purchase flow, seat selection, PGP payment, and post-sale operations.",
+      "Delivered B2B dashboards for hotel and cruise spa operations with scheduling, resources, and service management.",
+      "Helped evolve the frontend architecture with CLEAN principles, stronger validation with Zod, and scalable state management with MobX.",
     ],
     technologies: [
       "React",
       "TypeScript",
       "MobX",
       "Zod",
-      "React Hook Form",
-      "Inversify",
+      "CLEAN",
+      "Vite",
+      "Vitest",
     ],
-  },
-  {
-    id: "2",
-    company: "Nazaries Intelligence",
-    role: "Junior Software Developer",
-    period: "2023 – 2025",
-    description: "",
-    highlights: [
-      "Built a B2B dashboard for hotel/cruise spa operations — calendar scheduling, resource management, and service catalog.",
-      "Worked on a social support platform (EU/Community of Madrid funded) with multi-step forms for NGO providers.",
-      "Expanded into Angular, Vue.js/Nuxt, and Node.js across multiple client projects.",
-    ],
-    technologies: [
-      "React",
-      "Angular",
-      "Vue.js",
-      "Nuxt",
-      "Node.js",
-      "JavaScript",
-      "TypeScript",
-    ],
-  },
-  {
-    id: "3",
-    company: "Nazaries Intelligence",
-    role: "Internship",
-    period: "2022 – 2023",
-    description: "",
-    highlights: [
-      "Worked on internal and client projects with Ruby on Rails.",
-      "Integrated into professional workflows with Git and Docker.",
-    ],
-    technologies: ["Ruby on Rails", "Docker", "Git"],
   },
 ];
 
@@ -150,6 +119,6 @@ const contactLinks: ContactLink[] = [
     location="Granada, Spain"
     contactLinks={contactLinks}
   />
-  <Experience experiences={experience} title={t.experience.title} />
+  <Experience experiences={experience} title="Software engineer" />
   <Projects projects={projects} title={t.projects} />
 </BaseLayout>
