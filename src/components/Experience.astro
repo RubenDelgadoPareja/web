@@ -53,9 +53,11 @@ const { title, experiences } = Astro.props;
                 </div>
               </div>
 
-              <p class="mb-5 leading-relaxed text-stone-600 dark:text-stone-300">
-                {exp.description}
-              </p>
+              {exp.description && (
+                <p class="mb-5 leading-relaxed text-stone-600">
+                  {exp.description}
+                </p>
+              )}
 
               <ul class="mb-5 space-y-3">
                 {exp.highlights.map((highlight) => (

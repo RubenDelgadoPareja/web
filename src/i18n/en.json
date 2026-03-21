@@ -8,8 +8,8 @@
   },
   "about": {
     "greeting": "Hi, I'm",
-    "title": "Frontend Engineer",
-    "bio": "I design and build solid React and TypeScript frontends for product teams that need speed without sacrificing quality. My focus is turning complex requirements into clear, scalable experiences that drive business results.",
+    "title": "Software Engineer",
+    "bio": "Software engineer focused on React and TypeScript. Building product frontend at Nazaries Intelligence since 2022.",
     "availability": "Open to new challenges",
     "contactLabel": "Quick contact",
     "valueProps": [
@@ -34,7 +34,7 @@
   },
   "projects": {
     "title": "Projects",
-    "intro": "A selection of work and representative case studies from the environments where I bring the most value: product frontend, complex forms, and user flows with real business impact.",
+    "intro": "",
     "selectedWork": "Key contributions",
     "impact": "Impact and context",
     "demo": "View demo",

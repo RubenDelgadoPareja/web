@@ -1,7 +1,5 @@
 ---
 import "../styles/global.css";
-import LanguageSelector from "../components/LanguageSelector";
-import ThemeToggle from "../components/ThemeToggle.astro";
 import Analytics from "@vercel/analytics/astro";
 import { translations } from "../i18n/utils";
 
@@ -21,30 +19,12 @@ const currentUrl = Astro.url;
 const normalizedPath = currentUrl.pathname.endsWith("/")
   ? currentUrl.pathname
   : `${currentUrl.pathname}/`;
-const stackSectionId = "tech-stack";
 const canonicalUrl = `${siteUrl}${normalizedPath}`;
-const homeUrl = `${siteUrl}/`;
-const englishHomeUrl = `${siteUrl}/en/`;
 const ogImageUrl = `${siteUrl}/og-image.svg`;
 const sitemapUrl = `${siteUrl}/sitemap-index.xml`;
-const locale = lang === "es" ? "es_ES" : "en_US";
-const alternateLocale = lang === "es" ? "en_US" : "es_ES";
 
-const descriptions = {
-  es: "Portfolio de Ruben Delgado, frontend engineer especializado en React y TypeScript. Experiencia en producto real, formularios complejos, arquitectura mantenible e interfaces orientadas a negocio.",
-  en: "Portfolio of Ruben Delgado, a frontend engineer specialized in React and TypeScript. Experience in real products, complex form flows, maintainable architecture, and business-oriented interfaces."
-};
+const pageDescription = description ?? "Portfolio of Ruben Delgado, a software engineer specializing in React and TypeScript.";
 
-const pageDescription = description ?? descriptions[lang];
-
-const alternates =
-  normalizedPath === "/" || normalizedPath === "/en/"
-    ? [
-        { hrefLang: "es", href: homeUrl },
-        { hrefLang: "en", href: englishHomeUrl },
-        { hrefLang: "x-default", href: homeUrl },
-      ]
-    : [];
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -55,7 +35,7 @@ const structuredData = {
       name: 'Ruben Delgado',
       url: `${siteUrl}/`,
       image: ogImageUrl,
-      jobTitle: lang === 'es' ? 'Frontend Engineer' : 'Frontend Engineer',
+      jobTitle: 'Software Engineer',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Granada',
@@ -70,7 +50,7 @@ const structuredData = {
       '@id': `${siteUrl}/#website`,
       url: siteUrl,
       name: 'Ruben Delgado Portfolio',
-      inLanguage: ['es', 'en'],
+      inLanguage: ['en'],
       description: pageDescription,
       author: {
         '@id': `${siteUrl}/#person`,
@@ -123,9 +103,8 @@ const structuredData = {
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={pageDescription} />
-    <meta property="og:site_name" content="Ruben Delgado - Frontend Developer" />
-    <meta property="og:locale" content={locale} />
-    {alternates.length > 0 && <meta property="og:locale:alternate" content={alternateLocale} />}
+    <meta property="og:site_name" content="Ruben Delgado - Software Engineer" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:secure_url" content={ogImageUrl} />
     <meta property="og:image:type" content="image/svg+xml" />
@@ -142,21 +121,9 @@ const structuredData = {
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    {alternates.map(({ hrefLang, href }) => (
-      <link rel="alternate" hreflang={hrefLang} href={href} />
-    ))}
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-
-    <script is:inline>
-      const theme =
-        localStorage.getItem("theme") ||
-        (window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light");
-      document.documentElement.classList.toggle("dark", theme === "dark");
-    </script>
   </head>
-  <body class="bg-stone-50 dark:bg-stone-900 text-stone-800 dark:text-stone-100 transition-colors">
+  <body class="bg-stone-50 text-stone-800">
     <!-- Skip Link for Accessibility -->
     <a
       href="#main-content"
@@ -168,42 +135,35 @@ const structuredData = {
     {showNav && (
       <header class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md border-b border-stone-200 dark:border-stone-700 z-50" role="banner">
         <nav class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between" role="navigation" aria-label="Main navigation">
-          <a href={lang === "es" ? "/" : "/en/"} class="text-xl font-bold text-primary" aria-label="Ruben Delgado - Home">
+          <a href="/" class="text-xl font-bold text-primary" aria-label="Ruben Delgado - Home">
             RD
           </a>
 
           <!-- Desktop Navigation -->
           <ul class="hidden md:flex items-center gap-8" role="menubar">
             <li role="none">
-              <a href="#about" class="text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
+              <a href="#about" class="text-stone-600 hover:text-primary transition-colors" role="menuitem">
                 {t.nav.about}
               </a>
             </li>
             <li role="none">
-              <a href={`#${stackSectionId}`} class="text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
-                {t.nav.skills}
-              </a>
-            </li>
-            <li role="none">
-              <a href="#experience" class="text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
+              <a href="#experience" class="text-stone-600 hover:text-primary transition-colors" role="menuitem">
                 {t.nav.experience}
               </a>
             </li>
             <li role="none">
-              <a href="#projects" class="text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
+              <a href="#projects" class="text-stone-600 hover:text-primary transition-colors" role="menuitem">
                 {t.nav.projects}
               </a>
             </li>
           </ul>
 
-          <div class="flex items-center gap-2">
-            <LanguageSelector currentLang={lang} />
-
+          <div class="flex items-center">
             <!-- Mobile Menu Button -->
             <button
               id="mobile-menu-btn"
-              class="md:hidden p-2 text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark focus:outline-none focus:ring-2 focus:ring-primary rounded-lg"
-              aria-label={lang === "es" ? "Abrir menú" : "Open menu"}
+              class="md:hidden p-2 text-stone-600 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary rounded-lg"
+              aria-label="Open menu"
               aria-expanded="false"
               aria-controls="mobile-menu"
             >
@@ -214,38 +174,26 @@ const structuredData = {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-
-            <ThemeToggle lang={lang} />
           </div>
         </nav>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-stone-900 border-t border-stone-200 dark:border-stone-700" role="menu">
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-stone-200" role="menu">
           <ul class="px-6 py-4 space-y-4">
             <li role="none">
-              <a href="#about" class="block text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
+              <a href="#about" class="block text-stone-600 hover:text-primary transition-colors" role="menuitem">
                 {t.nav.about}
               </a>
             </li>
             <li role="none">
-              <a href={`#${stackSectionId}`} class="block text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
-                {t.nav.skills}
-              </a>
-            </li>
-            <li role="none">
-              <a href="#experience" class="block text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
+              <a href="#experience" class="block text-stone-600 hover:text-primary transition-colors" role="menuitem">
                 {t.nav.experience}
               </a>
             </li>
             <li role="none">
-              <a href="#projects" class="block text-stone-600 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors" role="menuitem">
+              <a href="#projects" class="block text-stone-600 hover:text-primary transition-colors" role="menuitem">
                 {t.nav.projects}
               </a>
-            </li>
-            <li class="pt-4 border-t border-stone-200 dark:border-stone-700">
-              <div class="flex items-center gap-3">
-                <ThemeToggle lang={lang} />
-              </div>
             </li>
           </ul>
         </div>
@@ -257,32 +205,11 @@ const structuredData = {
     </main>
 
     <!-- Footer -->
-    <footer class="py-8 border-t border-stone-200 dark:border-stone-700" role="contentinfo">
+    <footer class="py-8 border-t border-stone-200" role="contentinfo">
       <div class="max-w-4xl mx-auto px-6">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p class="text-stone-500 dark:text-stone-400 text-sm">
-            © {new Date().getFullYear()} Ruben Delgado. {t.footer.rights}
-          </p>
-          <nav aria-label="Legal links">
-            <ul class="flex flex-wrap justify-center gap-6 text-sm">
-              <li>
-                <a href="/cookies" class="text-stone-500 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
-                  {lang === "es" ? "Política de Cookies" : "Cookie Policy"}
-                </a>
-              </li>
-              <li>
-                <a href="/privacidad" class="text-stone-500 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
-                  {lang === "es" ? "Política de Privacidad" : "Privacy Policy"}
-                </a>
-              </li>
-              <li>
-                <a href="/legal" class="text-stone-500 dark:text-stone-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
-                  {lang === "es" ? "Aviso Legal" : "Legal Notice"}
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+        <p class="text-center text-stone-500 text-sm">
+          © {new Date().getFullYear()} Ruben Delgado
+        </p>
       </div>
     </footer>
     <Analytics />

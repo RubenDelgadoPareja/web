@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import About from "../components/About.astro";
-import TechStack from "../components/TechStack.astro";
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
 import type {
@@ -11,173 +10,105 @@ import type {
 } from "../types/portfolio";
 import { translations } from "../i18n/utils";
 
-const lang = "es";
+const lang = "en";
 const t = translations[lang];
 
 const experience: ExperienceType[] = [
   {
     id: "1",
     company: "Nazaries Intelligence",
-    role: "Desarrollador de Software Mid-Level",
-    period: "2025 - Actualidad",
-    description:
-      "He trabajado en producto real con foco en frontend React para entornos donde la mantenibilidad, la validación de datos y la experiencia de usuario tienen impacto directo en negocio.",
+    role: "Mid-Level Software Developer",
+    period: "2025 – Present",
+    description: "",
     highlights: [
-      "Participé en un proyecto de formularios complejos y de gran volumen, mejorando la robustez del flujo al evolucionar de Formik a React Hook Form.",
-      "Colaboré en decisiones de arquitectura con enfoque CLEAN y hexagonal, ayudando a mantener el código más escalable y fácil de extender.",
-      "Contribuí a la migración de validaciones desde class-validator a Zod y a la introducción de patrones como inyección de dependencias con Inversify.",
-      "Formé parte del desarrollo de una pasarela de compra de entradas para teatros para El Corte Inglés, en un contexto con complejidad funcional real.",
+      "Built the ticketing platform for El Corte Inglés — full purchase flow, seat selection, PGP payment gateway, expert staff channels, and post-sale area.",
+      "Led migration of complex form workflows from Formik to React Hook Form across a large-scale product.",
+      "Contributed to CLEAN and hexagonal architecture decisions; migrated validation from class-validator to Zod with Inversify DI.",
     ],
-    technologies: [
-      "React",
-      "TypeScript",
-      "MobX",
-      "Inversify",
-      "Zod",
-      "React Hook Form",
-      "CLEAN Architecture",
-    ],
+    technologies: ["React", "TypeScript", "MobX", "Zod", "React Hook Form", "Inversify"],
   },
   {
     id: "2",
     company: "Nazaries Intelligence",
-    role: "Desarrollador de Software Junior",
-    period: "2023 - 2025",
-    description:
-      "En esta etapa consolidé mi transición hacia frontend, trabajando con diferentes equipos y productos donde la adaptación rápida y la calidad de ejecución eran claves.",
+    role: "Junior Software Developer",
+    period: "2023 – 2025",
+    description: "",
     highlights: [
-      "Impulsé mi especialización en JavaScript y React colaborando en nuevas interfaces y en la implementación de diseños para distintos equipos.",
-      "Trabajé con Angular en una biblioteca virtual infantil para Santillana, aportando desarrollo frontend en un producto con enfoque educativo.",
-      "Amplié mi rango técnico incorporando Vue.js con Nuxt y sumando experiencia práctica con Node.js y MongoDB.",
-      "Participé en personalizaciones sobre WordPress, aprendiendo a moverme entre contextos técnicos muy distintos sin perder ritmo de entrega.",
+      "Built a B2B dashboard for hotel/cruise spa operations — calendar scheduling, resource management, and service catalog.",
+      "Worked on a social support platform (EU/Community of Madrid funded) with multi-step forms for NGO providers.",
+      "Expanded into Angular, Vue.js/Nuxt, and Node.js across multiple client projects.",
     ],
-    technologies: [
-      "React",
-      "Angular",
-      "Vue.js",
-      "Nuxt",
-      "Node.js",
-      "MongoDB",
-      "JavaScript",
-      "WordPress",
-      "Jest",
-    ],
+    technologies: ["React", "Angular", "Vue.js", "Nuxt", "Node.js", "JavaScript", "TypeScript"],
   },
   {
     id: "3",
     company: "Nazaries Intelligence",
-    role: "Prácticas",
-    period: "2022 - 2023",
-    description:
-      "Mi etapa de prácticas fue el punto de entrada a un entorno profesional real, donde empecé a construir criterio técnico y hábitos de trabajo sólidos.",
+    role: "Internship",
+    period: "2022 – 2023",
+    description: "",
     highlights: [
-      "Comencé a trabajar con Ruby on Rails y el patrón MVC dentro de proyectos internos y desarrollos para cliente.",
-      "Aprendí a utilizar Git y Docker dentro de flujos de trabajo profesionales, integrándome en dinámicas reales de equipo.",
-      "Participé tanto en tareas de mantenimiento como en nuevos desarrollos, ganando contexto sobre ciclo de vida de producto y entrega continua.",
+      "Worked on internal and client projects with Ruby on Rails.",
+      "Integrated into professional workflows with Git and Docker.",
     ],
-    technologies: ["Ruby on Rails", "MVC", "Docker", "Git"],
+    technologies: ["Ruby on Rails", "Docker", "Git"],
   },
 ];
 
 const projects: Project[] = [
   {
     id: "1",
-    label: "Ticketing nacional",
-    title: "Rediseño y reimplementación de ticketing para musicales y teatros",
+    label: "National ticketing",
+    title: "El Corte Inglés — Ticketing platform for musicals and theaters",
     description:
-      "Proyecto actual para El Corte Inglés centrado en el rediseño y la reimplementación completa de su ticketing para musicales y espectáculos a nivel nacional, motivado por el cambio de proveedor de entradas.",
-    outcome:
-      "Trabajo en un producto con alta complejidad funcional, múltiples recorridos de compra y postventa, y varios canales de venta que exigen consistencia, fiabilidad y una base técnica mantenible para seguir evolucionando.",
+      "Full redesign and rebuild of the national ticketing system following a provider change.",
+    outcome: "",
     highlights: [
-      "Participación junto al equipo de frontend y backend en la reconstrucción del flujo completo: calendario con selección de fecha y hora, elección de zona del teatro, selección de asientos con comprobación de disponibilidad, login de El Corte Inglés, resumen de compra, pasarela PGP y thank you page.",
-      "Desarrollo de canales expertos para empleados de El Corte Inglés orientados a la compra para clientes desde web, centro comercial y agencias de viajes.",
-      "Generación de entradas en formato PDF y térmico, cubriendo necesidades tanto digitales como operativas en distintos canales de venta.",
-      "Implementación de una autopostventa para consulta de entradas, cancelaciones y solicitudes de devolución.",
-      "Contribución a un frontend donde la claridad de cada paso, la robustez de la validación y la coherencia entre recorridos tienen impacto directo en negocio y soporte.",
+      "End-to-end purchase flow: calendar, zone/seat selection, PGP payment, thank you page.",
+      "Expert channels for employees across web, department stores, and travel agencies.",
+      "Self-service post-sale for ticket lookup, cancellations, and refunds.",
     ],
     technologies: ["React", "TypeScript", "Zod", "MobX"],
   },
   {
     id: "2",
-    label: "Cliente internacional",
-    title: "RTR / Real Time Services, dashboard B2B para hoteles y cruceros",
+    label: "B2B dashboard",
+    title: "RTR / Real Time Services — Spa management for hotels and cruises",
     description:
-      "Uno de mis primeros proyectos con cliente internacional: una SPA B2B para gestionar servicios como spa y otras operaciones dentro de hoteles, cruceros y entornos similares.",
-    outcome:
-      "Participación en un dashboard operativo complejo con calendario, filtros, recursos y gestión de servicios, en un contexto donde además asumí parte de la responsabilidad que normalmente habrían cubierto dos perfiles senior.",
+      "B2B SPA to manage spa services and operations in hotels, cruises, and similar environments.",
+    outcome: "",
     highlights: [
-      "Diseño y desarrollo junto al equipo de frontend de un dashboard B2B donde los trabajadores podían consultar servicios por semana, proveedor, horario y habitaciones.",
-      "Implementación de una vista de calendario con una herramienta antigua y difícil de trabajar, capaz de gestionar eventos de una forma parecida a un Google Calendar, pero con mayores limitaciones técnicas.",
-      "Construcción de distintas áreas funcionales alrededor del calendario: habitaciones, materiales, personal, horarios y catálogo de servicios con categorías, como tratamientos de spa específicos.",
-      "Cobertura de una responsabilidad superior a mi nivel esperado al asumir parte del trabajo de dos seniors que no podían estar al 100% en el proyecto.",
-      "El cliente quedó especialmente satisfecho con el resultado y con el equipo, hasta el punto de proponernos seguir contando con los mismos programadores en un proyecto futuro.",
+      "Calendar-based scheduling with provider, room, and time filters.",
+      "Rooms, staff, materials, schedules, and service catalog management.",
+      "Took on responsibility beyond expected level; client explicitly requested the same team for a follow-up project.",
     ],
-    technologies: [
-      "React",
-      "JavaScript",
-      "B2B Dashboard",
-      "Calendar Integration",
-    ],
+    technologies: ["React", "JavaScript"],
   },
   {
     id: "3",
-    label: "Dashboard complejo",
-    title: "Innicia / Plataforma360 para organizaciones de ayuda social",
+    label: "Complex dashboard",
+    title: "Innicia / Plataforma360 — Support platform for social organizations",
     description:
-      "Proyecto desarrollado junto a mi equipo de frontend para una plataforma subvencionada por la UE y la Comunidad de Madrid, orientada a centralizar organizaciones que ofrecen ayuda a víctimas de violencia de género y delitos de odio.",
-    outcome:
-      "Trabajo en un dashboard de gran tamaño con múltiples tipos de solicitudes y recorridos de formulario, donde la claridad del flujo, la mantenibilidad y la capacidad de evolución eran esenciales para un producto con alcance social real.",
+      "EU and Community of Madrid-funded platform connecting NGOs and support organizations for vulnerable groups.",
+    outcome: "",
     highlights: [
-      "Participación en una web de gran dimensión pensada para conectar organizaciones y facilitar la solicitud de ayudas a colectivos vulnerables y múltiples minorías.",
-      "Desarrollo de numerosos formularios multipágina dentro de un dashboard con muchos flujos distintos y diferentes tipos de solicitudes a proveedores para ONGs.",
-      "Trabajo inicial con Formik y evolución posterior a React Hook Form para mejorar control, mantenibilidad y escalabilidad en formularios complejos.",
-      "Contribución a un producto con fuerte componente funcional y social, donde la robustez del frontend era importante para no añadir fricción a procesos delicados.",
+      "Multi-step forms for different request types and NGO submission flows.",
+      "Migrated from Formik to React Hook Form for better maintainability at scale.",
     ],
-    technologies: [
-      "React",
-      "TypeScript",
-      "React Hook Form",
-      "Zod",
-      "Inversify",
-    ],
+    technologies: ["React", "TypeScript", "React Hook Form", "Zod", "Inversify"],
   },
   {
     id: "4",
-    label: "Producto educativo",
-    title: "Biblioteca virtual infantil para Santillana",
+    label: "Education product",
+    title: "Children's virtual library for Santillana",
     description:
-      "Proyecto educativo en el que dejé temporalmente React para trabajar principalmente con Vue.js y Nuxt en la parte central del producto, en una etapa donde todavía era junior pero empecé a ganar más responsabilidad.",
-    outcome:
-      "Experiencia en un producto digital con fuerte componente multimedia y lógica de seguimiento de lectura, que me ayudó a crecer en responsabilidad y a adaptarme a distintos frameworks dentro de un mismo proyecto.",
+      "Digital product for children to read, listen to podcasts, audiobooks, and watch videos.",
+    outcome: "",
     highlights: [
-      "Desarrollo principal con Vue.js y Nuxt en la parte más importante del producto, una biblioteca virtual orientada a público infantil.",
-      "Construcción de una experiencia que permitía elegir libros y consumirlos en varios formatos: lectura, modo podcast, audiolibro y reproductor de vídeo.",
-      "Colaboración puntual con Angular, Node.js y MongoDB cuando el proyecto lo requería, ampliando mi rango técnico desde una etapa todavía temprana.",
-      "Participación en un producto con lógica de seguimiento de lectura para saber cuándo se abría un libro, cuándo se pasaban páginas y cuánto tiempo se dedicaba a la lectura, aunque esa parte recaía principalmente en backend.",
-      "Proyecto clave para empezar a asumir más responsabilidad como junior y formarme con mayor profundidad en otros frameworks además de React.",
+      "Main development with Vue.js and Nuxt; contributed with Angular and Node.js when needed.",
+      "Built reading-tracking logic and multi-format book consumption experience.",
     ],
-    technologies: ["Vue.js", "Nuxt", "Angular", "Node.js", "MongoDB"],
+    technologies: ["Vue.js", "Nuxt", "Angular", "Node.js"],
   },
-];
-
-const techStack = [
-  "React",
-  "TypeScript",
-  "MobX",
-  "Zod",
-  "React Hook Form",
-  "Vite",
-  "Jest",
-  "Nuxt",
-  "Node.js",
-  "MongoDB",
-  "JavaScript",
-  "WordPress",
-  "Vue.js",
-  "Ruby on Rails",
-  "Docker",
-  "Git",
-  "Angular",
 ];
 
 const contactLinks: ContactLink[] = [
@@ -191,7 +122,7 @@ const contactLinks: ContactLink[] = [
 ---
 
 <BaseLayout
-  title="Ruben Delgado | Frontend Engineer especializado en React y TypeScript"
+  title="Ruben Delgado | Software Engineer"
   lang={lang}
 >
   <About
@@ -200,7 +131,6 @@ const contactLinks: ContactLink[] = [
     location="Granada, Spain"
     contactLinks={contactLinks}
   />
-  <TechStack technologies={techStack} title={t.techStack.title} />
   <Experience experiences={experience} title={t.experience.title} />
   <Projects projects={projects} title={t.projects} />
 </BaseLayout>

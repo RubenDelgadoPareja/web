@@ -28,11 +28,13 @@ const { projects, title } = Astro.props;
       <span class="absolute bottom-0 left-0 w-24 h-1 bg-primary rounded-full"
       ></span>
     </h2>
-    <p
-      class="mb-10 max-w-3xl text-lg leading-relaxed text-stone-600 dark:text-stone-300 fade-in-up"
-    >
-      {title.intro}
-    </p>
+    {title.intro && (
+      <p
+        class="mb-10 max-w-3xl text-lg leading-relaxed text-stone-600 fade-in-up"
+      >
+        {title.intro}
+      </p>
+    )}
     {
       projects.length === 0 ? (
         <div class="glass-card rounded-2xl p-12 text-center fade-in-up">
@@ -113,14 +115,16 @@ const { projects, title } = Astro.props;
                 </div>
               </div>
 
-              <div class="mb-6 rounded-2xl border border-stone-200/80 bg-white/70 p-5 dark:border-stone-700 dark:bg-stone-900/50">
-                <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-                  {title.impact}
-                </p>
-                <p class="text-base leading-relaxed text-stone-700 dark:text-stone-200">
-                  {project.outcome}
-                </p>
-              </div>
+              {project.outcome && (
+                <div class="mb-6 rounded-2xl border border-stone-200/80 bg-white/70 p-5 dark:border-stone-700 dark:bg-stone-900/50">
+                  <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
+                    {title.impact}
+                  </p>
+                  <p class="text-base leading-relaxed text-stone-700 dark:text-stone-200">
+                    {project.outcome}
+                  </p>
+                </div>
+              )}
 
               <div class="mb-8">
                 <p class="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
