@@ -6,11 +6,10 @@ import { translations } from "../i18n/utils";
 interface Props {
   title: string;
   lang: "es" | "en";
-  showNav?: boolean;
   description?: string;
 }
 
-const { title, lang, showNav = true, description } = Astro.props;
+const { title, lang, description } = Astro.props;
 
 const t = translations[lang];
 
@@ -25,7 +24,7 @@ const sitemapUrl = `${siteUrl}/sitemap-index.xml`;
 
 const pageDescription =
   description ??
-  "Portfolio of Ruben Delgado, a software engineer specializing in React and TypeScript.";
+  "Rubén Delgado — Frontend Engineer with 3+ years shipping React & TypeScript apps for El Corte Inglés and US enterprise clients. Based in Granada, Spain.";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -33,31 +32,45 @@ const structuredData = {
     {
       "@type": "Person",
       "@id": `${siteUrl}/#person`,
-      name: "Ruben Delgado",
+      name: "Rubén Delgado",
       url: `${siteUrl}/`,
-      image: ogImageUrl,
-      jobTitle: "Software Engineer",
+      image: `${siteUrl}/avatar.jpeg`,
+      jobTitle: "Frontend Engineer",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Granada",
         addressCountry: "ES",
       },
       email: "mailto:ruben051199@gmail.com",
-      sameAs: ["https://linkedin.com/in/rubén-delgado-pareja-baaa67206"],
+      sameAs: [
+        "https://linkedin.com/in/ruben-delgado-pareja",
+        "https://github.com/RubenDelgadoPareja",
+      ],
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: "Universidad de Granada",
+        url: "https://www.ugr.es",
+      },
       knowsAbout: [
         "React",
         "TypeScript",
         "JavaScript",
         "Frontend Development",
-        "UI Engineering",
-        "Astro",
+        "Clean Architecture",
+        "Hexagonal Architecture",
+        "Component Testing",
+        "Vitest",
+        "WebSockets",
+        "Vite",
+        "Vue.js",
+        "Next.js",
       ],
     },
     {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
       url: siteUrl,
-      name: "Ruben Delgado Portfolio",
+      name: "Rubén Delgado — Frontend Engineer",
       inLanguage: ["en"],
       description: pageDescription,
       author: {
@@ -91,43 +104,45 @@ const structuredData = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="theme-color" content="#f7f6f2" />
+    <meta name="theme-color" content="#f1f0ec" />
+
+    <!-- Preconnect para Google Fonts (Core Web Vitals) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Primary Meta Tags -->
     <title>{title}</title>
-    <meta name="title" content={title} />
     <meta name="description" content={pageDescription} />
-    <meta name="author" content="Ruben Delgado" />
+    <meta name="author" content="Rubén Delgado" />
     <meta
       name="robots"
       content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     />
     <link rel="canonical" href={canonicalUrl} />
-    <link
-      rel="sitemap"
-      type="application/xml"
-      title="Sitemap"
-      href={sitemapUrl}
-    />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href={sitemapUrl} />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Identidad en redes -->
+    <link rel="me" href="https://linkedin.com/in/ruben-delgado-pareja" />
+    <link rel="me" href="https://github.com/RubenDelgadoPareja" />
+    <link rel="me" href="mailto:ruben051199@gmail.com" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={pageDescription} />
-    <meta property="og:site_name" content="Ruben Delgado - Software Engineer" />
+    <meta property="og:site_name" content="Rubén Delgado — Frontend Engineer" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:secure_url" content={ogImageUrl} />
     <meta property="og:image:type" content="image/svg+xml" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Ruben Delgado portfolio preview" />
+    <meta property="og:image:alt" content="Rubén Delgado — Frontend Engineer portfolio" />
 
-    <!-- Twitter -->
+    <!-- Twitter / X -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalUrl} />
     <meta property="twitter:title" content={title} />
@@ -136,6 +151,8 @@ const structuredData = {
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Structured Data -->
     <script
       type="application/ld+json"
       set:html={JSON.stringify(structuredData)}
@@ -150,50 +167,6 @@ const structuredData = {
       Skip to main content
     </a>
 
-    {
-      showNav && (
-        <nav
-          id="section-rail"
-          class="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 lg:flex"
-          aria-label="Section chapters"
-        >
-          <div class="space-y-3 rounded-sm border border-[var(--line)] bg-[var(--surface)]/90 px-3 py-3 backdrop-blur">
-            <ul class="space-y-3">
-              <li>
-                <a
-                  href="#about"
-                  data-section-link="about"
-                  class="group flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)]"
-                >
-                  <span class="h-1.5 w-1.5 rounded-full bg-[var(--line)] transition-colors" />
-                  <span>{t.nav.about}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#experience"
-                  data-section-link="experience"
-                  class="group flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)]"
-                >
-                  <span class="h-1.5 w-1.5 rounded-full bg-[var(--line)] transition-colors" />
-                  <span>{t.nav.experience}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#projects"
-                  data-section-link="projects"
-                  class="group flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)]"
-                >
-                  <span class="h-1.5 w-1.5 rounded-full bg-[var(--line)] transition-colors" />
-                  <span>{t.nav.projects}</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      )
-    }
 
     <main id="main-content" class="" tabindex="-1" role="main">
       <slot />
@@ -214,76 +187,10 @@ const structuredData = {
 </html>
 
 <script>
-  const railLinks = Array.from(
-    document.querySelectorAll("[data-section-link]"),
-  );
+  // Cursor spotlight
+  window.addEventListener('mousemove', (e) => {
+    document.documentElement.style.setProperty('--mouse-x', e.clientX + 'px');
+    document.documentElement.style.setProperty('--mouse-y', e.clientY + 'px');
+  });
 
-  const sectionIds = ["about", "experience", "projects"];
-  const sections = sectionIds
-    .map((id) => document.getElementById(id))
-    .filter(Boolean);
-
-  const goToSection = (id) => {
-    const target = document.getElementById(id);
-    if (!target) {
-      return;
-    }
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
-  const updateRail = (activeId) => {
-    const index = sectionIds.indexOf(activeId);
-
-    sections.forEach((section) => {
-      section.setAttribute(
-        "data-active",
-        section.id === activeId ? "true" : "false",
-      );
-    });
-
-    railLinks.forEach((link) => {
-      const isActive = link.getAttribute("data-section-link") === activeId;
-      const dot = link.querySelector("span");
-
-      link.classList.toggle("text-[var(--text)]", isActive);
-      link.classList.toggle("text-[var(--muted)]", !isActive);
-      link.setAttribute("aria-current", isActive ? "true" : "false");
-
-      if (dot) {
-        dot.classList.toggle("bg-[var(--accent)]", isActive);
-        dot.classList.toggle("bg-[var(--line)]", !isActive);
-      }
-    });
-  };
-
-  if (sections.length > 0) {
-    updateRail("about");
-
-    railLinks.forEach((link) => {
-      link.addEventListener("click", (event) => {
-        event.preventDefault();
-        const targetId = link.getAttribute("data-section-link");
-        if (targetId) {
-          goToSection(targetId);
-        }
-      });
-    });
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visible?.target?.id) {
-          updateRail(visible.target.id);
-        }
-      },
-      {
-        threshold: [0.35, 0.6, 0.85],
-      },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-  }
 </script>

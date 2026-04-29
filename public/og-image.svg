@@ -1,39 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">Ruben Delgado - Frontend Engineer</title>
-  <desc id="desc">Portfolio preview for Ruben Delgado, Frontend Engineer specialized in React and TypeScript.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="og-title og-desc">
+  <title id="og-title">Rubén Delgado — Frontend Engineer</title>
+  <desc id="og-desc">Portfolio of Rubén Delgado, Frontend Engineer specialized in React and TypeScript.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#f8fafc" />
-      <stop offset="100%" stop-color="#e2e8f0" />
-    </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#0f766e" />
-      <stop offset="100%" stop-color="#0ea5e9" />
+      <stop offset="0%" stop-color="#f1f0ec" />
+      <stop offset="100%" stop-color="#e8e6e0" />
     </linearGradient>
   </defs>
 
   <rect width="1200" height="630" fill="url(#bg)" />
-  <circle cx="1020" cy="140" r="220" fill="#0ea5e9" fill-opacity="0.10" />
-  <circle cx="190" cy="520" r="180" fill="#0f766e" fill-opacity="0.12" />
+  <circle cx="1060" cy="120" r="260" fill="#2563eb" fill-opacity="0.07" />
+  <circle cx="160" cy="530" r="200" fill="#2563eb" fill-opacity="0.05" />
 
-  <rect x="80" y="90" width="1040" height="450" rx="30" fill="#ffffff" fill-opacity="0.85" stroke="#cbd5e1" />
+  <rect x="80" y="80" width="1040" height="470" rx="16" fill="#f9f8f5" fill-opacity="0.92" stroke="#c9c4ba" stroke-width="1.5" />
 
-  <text x="130" y="200" fill="#0f172a" font-family="Georgia, serif" font-size="40" font-weight="700">
-    Ruben Delgado
+  <text x="130" y="210" fill="#151515" font-family="Georgia, serif" font-size="56" font-weight="700" letter-spacing="-1">
+    Rubén Delgado
   </text>
-  <text x="130" y="255" fill="#0f766e" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="30" font-weight="600">
+  <text x="130" y="275" fill="#2563eb" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="600">
     Frontend Engineer
   </text>
-  <text x="130" y="320" fill="#334155" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="28">
-    React + TypeScript
+
+  <text x="130" y="345" fill="#5b564f" font-family="system-ui, -apple-system, sans-serif" font-size="24">
+    React · TypeScript · Clean Architecture
   </text>
-  <text x="130" y="368" fill="#334155" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="28">
-    Product-focused interfaces
+  <text x="130" y="390" fill="#5b564f" font-family="system-ui, -apple-system, sans-serif" font-size="24">
+    El Corte Inglés · Granada, Spain
   </text>
 
-  <rect x="130" y="430" width="340" height="14" rx="7" fill="url(#accent)" />
+  <rect x="130" y="450" width="280" height="3" rx="2" fill="#2563eb" fill-opacity="0.4" />
 
-  <text x="130" y="495" fill="#475569" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="22">
+  <text x="130" y="503" fill="#5b564f" font-family="system-ui, -apple-system, sans-serif" font-size="20">
     ruben-delgado.dev
   </text>
 </svg>
