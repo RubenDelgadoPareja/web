@@ -42,6 +42,23 @@ const experience: ExperienceType[] = [
 
 const projects: Project[] = [
   {
+    id: "0",
+    label: "Personal project",
+    title: "Formify — Visual form builder",
+    description:
+      "Personal project: a drag-and-drop form builder built as a clean architecture exercise, with domain-driven design and production-grade patterns.",
+    outcome:
+      "Built end-to-end as a personal project to demonstrate real architecture ownership outside of client work — from domain entities to a deployed, working product.",
+    highlights: [
+      "Domain layer is pure TypeScript — Field and Form are immutable value objects with zero React or MobX dependencies, constructor-level validation, and mutation methods that always return new instances.",
+      "MobX ViewModels wired through a useViewModel hook with explicit didMount/willUnmount lifecycle, keeping React components as thin views with no business logic.",
+      "Zod schemas derived from the domain model, consumed by React Hook Form for type-safe validation in the generated forms.",
+      "Domain entities covered with Vitest unit tests validating immutability invariants and invalid-state rejection.",
+    ],
+    technologies: ["React 19", "TypeScript", "MobX", "Zod", "React Hook Form", "Vitest", "Clean Architecture", "Tailwind CSS v4"],
+    link: "https://formify-xi-umber.vercel.app/",
+  },
+  {
     id: "1",
     label: "National ticketing",
     title: "El Corte Inglés — Theater Booking Platform",
