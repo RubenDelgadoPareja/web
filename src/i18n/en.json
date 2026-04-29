@@ -8,10 +8,10 @@
   },
   "about": {
     "greeting": "Hi, I'm",
-    "title": "Software Engineer",
-    "bioLine1": "Software engineer focused on React and TypeScript.",
-    "bioLine2": "Building product frontend at Nazaries Intelligence since 2022.",
-    "availability": "Open to new challenges",
+    "title": "Frontend Engineer",
+    "bioLine1": "Frontend engineer with 3+ years shipping production features for El Corte Inglés and US enterprise clients.",
+    "bioLine2": "CS graduate from Universidad de Granada (2024). Strong opinions on clean architecture, component testing, and what it means to truly own a feature.",
+    "availability": "Open to frontend & full-stack roles",
     "contactLabel": "Quick contact",
     "valueProps": [
       "Complex forms and critical user flows, without friction.",
@@ -20,11 +20,11 @@
       "Practical judgment on UX, performance, and production quality."
     ],
     "metrics": {
-      "experience": "2+ years",
-      "experienceLabel": "Production experience",
+      "experience": "3+",
+      "experienceLabel": "Years in production",
       "projects": "10+",
-      "projectsLabel": "Projects and collaborations",
-      "focus": "React + TS",
+      "projectsLabel": "Projects delivered",
+      "focus": "React / TS",
       "focusLabel": "Core specialization"
     },
     "cta": "Let's talk",

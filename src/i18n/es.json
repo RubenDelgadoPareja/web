@@ -20,11 +20,11 @@
       "Decisiones con criterio en UX, rendimiento y calidad en producción."
     ],
     "metrics": {
-      "experience": "+2 años",
-      "experienceLabel": "Experiencia en producción",
+      "experience": "3+",
+      "experienceLabel": "Años en producción",
       "projects": "10+",
-      "projectsLabel": "Proyectos y colaboraciones",
-      "focus": "React + TS",
+      "projectsLabel": "Proyectos entregados",
+      "focus": "React / TS",
       "focusLabel": "Especialidad principal"
     },
     "cta": "Hablemos",

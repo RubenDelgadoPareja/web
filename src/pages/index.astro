@@ -16,24 +16,26 @@ const t = translations[lang];
 const experience: ExperienceType[] = [
   {
     id: "1",
-    company: "Nazaries Intelligence",
-    role: "Software engineer",
-    period: "2022 – Present",
+    company: "Nazaríes Intelligenia",
+    role: "Software Engineer",
+    period: "Jul 2022 – Present",
     description:
-      "Working at Nazaries Intelligence from 2022 to the present, growing from internship to product-focused software engineer.",
+      "Digital consultancy delivering web platforms for enterprise clients across Spain and the US.",
     highlights: [
-      "Built the ticketing platform for El Corte Inglés, including purchase flow, seat selection, PGP payment, and post-sale operations.",
-      "Delivered B2B dashboards for hotel and cruise spa operations with scheduling, resources, and service management.",
-      "Helped evolve the frontend architecture with CLEAN principles, stronger validation with Zod, and scalable state management with MobX.",
+      "Built the customer-facing booking platform for El Corte Inglés (2 theaters, multiple concurrent shows) — interactive seat selection with real-time availability checks, multi-step reservation flow, and Vitest integration tests protecting critical purchase paths.",
+      "Owned end-to-end delivery of the scheduling module for a US-based SPA chain ERP: interactive calendar with event creation, employee assignment, and real-time updates via WebSockets in a distributed team of ~7 engineers.",
+      "Collaborated directly with US stakeholders in daily standups and refinements, translating product requirements into technical specs.",
+      "Applied Clean and Hexagonal Architecture patterns across projects to keep business logic decoupled from UI frameworks, enabling confident refactoring and easier testing.",
     ],
     technologies: [
       "React",
       "TypeScript",
-      "MobX",
-      "Zod",
-      "CLEAN",
       "Vite",
       "Vitest",
+      "WebSockets",
+      "Clean Architecture",
+      "Zod",
+      "MobX",
     ],
   },
 ];
@@ -42,42 +44,45 @@ const projects: Project[] = [
   {
     id: "1",
     label: "National ticketing",
-    title: "El Corte Inglés — Ticketing platform for musicals and theaters",
+    title: "El Corte Inglés — Theater Booking Platform",
     description:
-      "Full redesign and rebuild of the national ticketing system following a provider change.",
-    outcome: "",
+      "Customer-facing booking platform for Spain's largest retailer, covering 2 theaters and multiple concurrent shows. Cross-functional team of 6 engineers.",
+    outcome:
+      "Launched to production handling real purchase traffic for El Corte Inglés theater shows across Spain, including high-demand release windows.",
     highlights: [
-      "End-to-end purchase flow: calendar, zone/seat selection, PGP payment, thank you page.",
-      "Expert channels for employees across web, department stores, and travel agencies.",
-      "Self-service post-sale for ticket lookup, cancellations, and refunds.",
+      "Designed and built the interactive seat selection UI with real-time availability checks, coordinating date, show, and seat state across a multi-step reservation flow.",
+      "Optimized the seat-availability service requests, reducing redundant calls and improving page responsiveness during peak traffic on show release days.",
+      "Wrote component and integration tests with Vitest to protect critical booking flows and prevent regressions in production releases.",
+      "Built expert purchase channels for department store and travel agency employees with separate fulfillment flows.",
     ],
-    technologies: ["React", "TypeScript", "Zod", "MobX"],
+    technologies: ["React", "TypeScript", "Vite", "Vitest", "Zod", "MobX"],
   },
   {
     id: "2",
-    label: "B2B dashboard",
-    title: "RTR / Real Time Services — Spa management for hotels and cruises",
+    label: "Enterprise ERP",
+    title: "SPA Chain ERP — US Client",
     description:
-      "B2B SPA to manage spa services and operations in hotels, cruises, and similar environments.",
-    outcome: "",
+      "Comprehensive ERP for a US-based SPA chain managing operations across multiple locations. Distributed team of ~7 engineers across Spain and the US.",
+    outcome:
+      "Client explicitly requested the same team for a follow-up project after delivery.",
     highlights: [
-      "Calendar-based scheduling with provider, room, and time filters.",
-      "Rooms, staff, materials, schedules, and service catalog management.",
-      "Took on responsibility beyond expected level; client explicitly requested the same team for a follow-up project.",
+      "Owned end-to-end delivery of the scheduling module: interactive calendar with event creation, employee assignment, and real-time subscription to schedule changes via WebSockets.",
+      "Developed core ERP modules including rooms, staff, materials, suppliers, and service catalog management.",
+      "Collaborated directly with US stakeholders in daily standups and refinement sessions, translating product requirements into technical specs across timezones.",
     ],
-    technologies: ["React", "JavaScript"],
+    technologies: ["React", "TypeScript", "WebSockets"],
   },
   {
     id: "3",
-    label: "Complex dashboard",
-    title:
-      "Innicia / Plataforma360 — Support platform for social organizations",
+    label: "Social impact platform",
+    title: "Innicia / Plataforma360 — NGO Support Platform",
     description:
       "EU and Community of Madrid-funded platform connecting NGOs and support organizations for vulnerable groups.",
     outcome: "",
     highlights: [
-      "Multi-step forms for different request types and NGO submission flows.",
-      "Migrated from Formik to React Hook Form for better maintainability at scale.",
+      "Built multi-step forms for diverse request types and NGO submission flows with complex validation logic.",
+      "Migrated from Formik to React Hook Form, reducing form bundle size and improving maintainability at scale.",
+      "Applied Inversify for dependency injection, keeping business logic cleanly separated from UI layer.",
     ],
     technologies: [
       "React",
@@ -90,13 +95,13 @@ const projects: Project[] = [
   {
     id: "4",
     label: "Education product",
-    title: "Children's virtual library for Santillana",
+    title: "Santillana — Children's Digital Library",
     description:
-      "Digital product for children to read, listen to podcasts, audiobooks, and watch videos.",
+      "Digital product for children to read books, listen to podcasts and audiobooks, and watch videos. Published by one of Spain's largest education publishers.",
     outcome: "",
     highlights: [
-      "Main development with Vue.js and Nuxt; contributed with Angular and Node.js when needed.",
-      "Built reading-tracking logic and multi-format book consumption experience.",
+      "Led frontend development with Vue.js and Nuxt; contributed Angular and Node.js modules when needed.",
+      "Built reading-progress tracking logic and the multi-format content consumption experience (text, audio, video).",
     ],
     technologies: ["Vue.js", "Nuxt", "Angular", "Node.js"],
   },
@@ -106,13 +111,16 @@ const contactLinks: ContactLink[] = [
   { name: "Email", url: "mailto:ruben051199@gmail.com" },
   {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/rubén-delgado-pareja-baaa67206",
+    url: "https://linkedin.com/in/ruben-delgado-pareja",
   },
-  { name: "Phone", url: "tel:+34662000647" },
+  {
+    name: "GitHub",
+    url: "https://github.com/RubenDelgadoPareja",
+  },
 ];
 ---
 
-<BaseLayout title="Ruben Delgado | Software Engineer" lang={lang}>
+<BaseLayout title="Rubén Delgado | Frontend Engineer" lang={lang}>
   <About
     name="Ruben Delgado"
     about={t.about}
