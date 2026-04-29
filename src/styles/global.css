@@ -2,8 +2,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #2563eb;
-  --color-primary-dark: #2563eb;
+  --color-primary: #c07830;
+  --color-primary-dark: #c07830;
 }
 
 :root {
@@ -13,7 +13,7 @@
   --text: #151515;
   --muted: #5b564f;
   --line: #c9c4ba;
-  --accent: #2563eb;
+  --accent: #c07830;
   --mouse-x: -9999px;
   --mouse-y: -9999px;
 }
@@ -42,7 +42,7 @@ body::before {
   z-index: 1000;
   background: radial-gradient(
     700px circle at var(--mouse-x) var(--mouse-y),
-    rgba(37, 99, 235, 0.18),
+    rgba(192, 120, 48, 0.18),
     transparent 50%
   );
 }
