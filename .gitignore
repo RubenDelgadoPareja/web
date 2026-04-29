@@ -23,6 +23,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# Claude Code
+# AI tools
 .claude/
 CLAUDE.md
